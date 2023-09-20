@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="emerald">#059673</color>
+    <color name="emerald_focus">#10B991</color>
+    <color name="emerald_border">#6EE7CA</color>
+    <color name="orange">#FA7701</color>
+    <color name="orange_focus">#FF910B</color>
+    <color name="lime">#89B500</color>
+    <color name="lime_focus">#C4FA00</color>
+    <color name="red">#DC2626</color>
+    <color name="red_focus">#EF4444</color>
+    <color name="slate">#565873</color>
 </resources>
