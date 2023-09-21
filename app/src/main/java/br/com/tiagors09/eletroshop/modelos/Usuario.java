@@ -74,10 +74,13 @@ public class Usuario {
         return password;
     }
 
-    public void setPassword(String password) {
+    public boolean setPassword(String password) {
         if(!this.password.equals(password) && password.length() >= 8) {
             this.password = password;
+            return true;
         }
+
+        return false;
     }
 
     @Override
