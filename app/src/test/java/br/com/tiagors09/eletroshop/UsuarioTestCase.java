@@ -40,5 +40,9 @@ public class UsuarioTestCase extends TestCase {
 
         // Verifica se gerou dois usuários com ID's únicos
         assertNotSame(usuarioResultadoNaoEsperado, usuario);
+
+        // Verifica alteração de senha
+        boolean foiAceita = usuario.setPassword("OutraSenhaExemplo");
+        assertTrue(foiAceita);
     }
 }
