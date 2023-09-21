@@ -1,6 +1,7 @@
 package br.com.tiagors09.eletroshop.modelos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Usuario {
@@ -12,10 +13,13 @@ public class Usuario {
     private String email;
     private String password;
 
-    public Usuario(String nome, LocalDate dataNascimento, Localizacao local, String bio, String email, String password) {
+    public Usuario(String nome, String dataNascimento, Localizacao local, String bio, String email, String password) {
         this.ID = UUID.randomUUID();
         this.nome = nome;
-        this.dataNascimento = dataNascimento;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNascimento = LocalDate.parse(dataNascimento,dateTimeFormatter);
+
         this.local = local;
         this.bio = bio;
         this.email = email;
@@ -74,5 +78,18 @@ public class Usuario {
         if(!this.password.equals(password) && password.length() >= 8) {
             this.password = password;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "ID=" + ID +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", local=" + local +
+                ", bio='" + bio + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
