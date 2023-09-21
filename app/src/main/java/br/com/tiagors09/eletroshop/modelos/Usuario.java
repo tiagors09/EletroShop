@@ -1,18 +1,18 @@
 package br.com.tiagors09.eletroshop.modelos;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Usuario {
     private final UUID ID;
     private String nome;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private Localizacao local;
     private String bio;
     private String email;
     private String password;
 
-    public Usuario(String nome, Date dataNascimento, Localizacao local, String bio, String email, String password) {
+    public Usuario(String nome, LocalDate dataNascimento, Localizacao local, String bio, String email, String password) {
         this.ID = UUID.randomUUID();
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -34,11 +34,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
