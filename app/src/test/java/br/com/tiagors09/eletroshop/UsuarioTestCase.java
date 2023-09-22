@@ -1,6 +1,7 @@
 package br.com.tiagors09.eletroshop;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
-public class UsuarioTestCase extends TestCase {
+public class UsuarioTestCase {
     /*
      * Realiza um teste para verificar a integridade e correção do construtor.
      */
