@@ -19,6 +19,7 @@ public class UsuarioTestCase {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         Usuario usuarioResultadoNaoEsperado = new Usuario(
+                "01234567891",
           "Tiago Rodrigues Sousa",
                 "28/01/2001",
                 new Localizacao(3.1000, 4.000),
@@ -28,6 +29,7 @@ public class UsuarioTestCase {
         );
 
         Usuario usuario = new Usuario(
+                "01234567891",
                 "Tiago Rodrigues Sousa",
                 "28/01/2001",
                 new Localizacao(3.1000, 4.000),
