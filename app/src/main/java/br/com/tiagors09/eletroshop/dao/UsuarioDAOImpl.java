@@ -6,11 +6,11 @@ import java.util.UUID;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
-    private HashMap<UUID,Usuario> usuarios;
+    private HashMap<String,Usuario> usuarios;
     private static UsuarioDAO instance;
 
     private UsuarioDAOImpl() {
-        usuarios = new HashMap<UUID,Usuario>();
+        usuarios = new HashMap<String,Usuario>();
     }
 
     public static UsuarioDAO getInstance() {
@@ -23,31 +23,26 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     }
 
     @Override
-    public void salvar(Usuario u) {
-        usuarios.put(u.getID(), u);
+    public Usuario salvar(Usuario u) {
+        return usuarios.put(u.getCPF(), u);
     }
 
     @Override
-    public void apagar(UUID ID) {
-        if (usuarios.containsKey(ID)) {
-            usuarios.remove(ID);
+    public Usuario apagar(String CPF) {
+        if (usuarios.containsKey(CPF)) {
+            return usuarios.remove(CPF);
         }
+
+        return null;
     }
 
     @Override
-    public void atualizar(Usuario u) {
-        if(usuarios.containsKey(u.getID())) {
-            usuarios.put(u.getID(), u);
-        }
+    public Usuario ler(String CPF) {
+        return usuarios.get(CPF);
     }
 
     @Override
-    public Usuario ler(UUID ID) {
-        return usuarios.get(ID);
-    }
-
-    @Override
-    public HashMap<UUID, Usuario> lerTodosUsuarios() {
+    public HashMap<String, Usuario> lerTodosUsuarios() {
         return this.usuarios;
     }
 }
