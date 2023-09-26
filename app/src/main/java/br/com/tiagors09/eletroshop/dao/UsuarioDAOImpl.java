@@ -23,25 +23,31 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     }
 
     @Override
-    public boolean salvarUsuario(Usuario u) {
+    public void salvar(Usuario u) {
         usuarios.put(u.getID(), u);
-        return true;
     }
 
     @Override
-    public Usuario lerUsuario(UUID ID) {
+    public void apagar(UUID ID) {
+        if (usuarios.containsKey(ID)) {
+            usuarios.remove(ID);
+        }
+    }
+
+    @Override
+    public void atualizar(Usuario u) {
+        if(usuarios.containsKey(u.getID())) {
+            usuarios.put(u.getID(), u);
+        }
+    }
+
+    @Override
+    public Usuario ler(UUID ID) {
         return usuarios.get(ID);
     }
 
     @Override
-    public boolean deletarUsuario(UUID ID) {
-        Usuario u = usuarios.get(ID);
-
-        if (u != null) {
-            usuarios.remove(ID);
-            return true;
-        }
-
-        return false;
+    public HashMap<UUID, Usuario> lerTodosUsuarios() {
+        return this.usuarios;
     }
 }
