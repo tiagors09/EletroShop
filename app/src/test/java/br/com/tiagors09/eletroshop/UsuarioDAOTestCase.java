@@ -19,6 +19,7 @@ public class UsuarioDAOTestCase {
     @Test
     public void adicionarUsuario() {
         Usuario usuario = new Usuario(
+                "01234567891",
                 "Tiago Rodrigues Sousa",
                 "28/01/2001",
                 new Localizacao(3.12, 4.12),
@@ -28,6 +29,21 @@ public class UsuarioDAOTestCase {
 
         assertNotNull(this.usuarioDAO);
 
-        assertTrue(usuarioDAO.salvarUsuario(usuario));
+        usuarioDAO.salvar(usuario);
+
+        assertNotNull(this.usuarioDAO.lerTodosUsuarios());
+    }
+
+    @Test
+    public void lerUsuario() {
+        assertNotNull(this.usuarioDAO.ler("01234567891"));
+    }
+
+    public void apagarUsuario() {
+        assertNotNull(this.usuarioDAO.apagar("01234567891"));
+    }
+
+    public void lerTodosUsuarios() {
+        assertNotNull(this.usuarioDAO.lerTodosUsuarios());
     }
 }
