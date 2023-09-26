@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Usuario {
-    private final UUID ID;
+    private String CPF;
     private String nome;
     private LocalDate dataNascimento;
     private Localizacao local;
@@ -13,8 +13,8 @@ public class Usuario {
     private String email;
     private String password;
 
-    public Usuario(String nome, String dataNascimento, Localizacao local, String bio, String email, String password) {
-        this.ID = UUID.randomUUID();
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password) {
+        this.CPF = CPF;
         this.nome = nome;
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -26,8 +26,10 @@ public class Usuario {
         this.password = password;
     }
 
-    public UUID getID() {
-        return ID;
+    public String getCPF() { return CPF; }
+
+    public void setCpf(String CPF) {
+        this.CPF = CPF;
     }
 
     public String getNome() {
@@ -86,7 +88,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "ID=" + ID +
+                "CPF=" + CPF +
                 ", nome='" + nome + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", local=" + local +
