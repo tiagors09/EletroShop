@@ -33,5 +33,9 @@
             android:name=".ExibicaoPerfil"
             android:exported="true"
             android:label="@string/title_activity_exibicao_perfil"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 </manifest>
