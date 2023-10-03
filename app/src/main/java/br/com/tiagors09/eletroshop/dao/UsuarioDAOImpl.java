@@ -1,5 +1,6 @@
 package br.com.tiagors09.eletroshop.dao;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -10,13 +11,12 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     private static UsuarioDAO instance;
 
     private UsuarioDAOImpl() {
-        usuarios = new HashMap<String,Usuario>();
+        this.usuarios = new HashMap<String,Usuario>();
     }
 
     public static UsuarioDAO getInstance() {
         if (instance == null) {
             instance = new UsuarioDAOImpl();
-            return instance;
         }
 
         return instance;
@@ -42,7 +42,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     }
 
     @Override
-    public HashMap<String, Usuario> lerTodosUsuarios() {
-        return this.usuarios;
+    public Collection<Usuario> lerTodosUsuarios() {
+        return this.usuarios.values();
     }
 }
