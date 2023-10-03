@@ -60,6 +60,9 @@
             android:fontFamily="@font/roboto"
             android:text="@string/btn_editar_imagem"
             android:textColor="@color/white"
+            app:icon="@drawable/btn_edit_foreground"
+            app:iconGravity="textStart"
+            app:iconSize="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewPerfil" />
