@@ -13,8 +13,6 @@
         android:theme="@style/Theme.EletroShop"
         tools:targetApi="31">
         <activity
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -23,6 +21,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity
+            android:name=".CriacaoDePerfil"
+            android:exported="false"
+            android:label="@string/title_activity_criacao_perfil"/>
+        <activity
+            android:name=".EdicaoDePerfil"
+            android:exported="false"
+            android:label="@string/title_activity_edicao_perfil"/>
+        <activity
+            android:name=".ExibicaoPerfil"
+            android:exported="true"
+            android:label="@string/title_activity_exibicao_perfil"/>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 </manifest>
