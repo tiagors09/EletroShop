@@ -36,4 +36,14 @@
     <string name="label_bio">Bio</string>
     <string name="heading_carrinho_sem_produtos">Carrinho sem Produtos</string>
     <string name="heading_sem_favoritos">Sem Favoritos</string>
+    <string name="label_exibicao_perfil">Perfil</string>
+    <string name="descricao_foto_perfil">Foto de perfil do usuário</string>
+    <string name="mock_nome_perfil">Cristiano Ronaldo Jr.</string>
+    <string name="mock_cidade_perfil">Maringá-PA</string>
+    <string name="mock_dataNasc_perfil">01/01/1990</string>
+    <string name="title_activity_exibicao_perfil">ExibicaoPerfil</string>
+    <string name="title_activity_criacao_perfil">CriacaoPefil</string>
+    <string name="title_activity_edicao_perfil">EdicaoPerfil</string>
+    <string name="label_bio_exibicao_perfil">Bio</string>
+    <string name="mock_bio_exibicao_perfil">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt, ligula non varius efficitur, nulla nunc mollis turpis, id porta dolor sem vitae nisi. Proin non nunc aliquet, tempus nibh a, sagittis tellus. Vivamus eu orci commodo, lacinia mi quis, posuere urna. In finibus lorem velit, in porta elit viverra sed. Etiam egestas, est nec venenatis ultrices, augue lacus tristique nisi, a suscipit massa nunc id nunc. Praesent laoreet lacinia facilisis. Vestibulum congue convallis massa, et lobortis tortor pretium quis. Pellentesque aliquet dui orci, in facilisis risus mollis vitae. Quisque vitae metus nisi. "</string>
 </resources>
