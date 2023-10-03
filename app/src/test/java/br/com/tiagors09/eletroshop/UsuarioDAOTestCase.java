@@ -39,10 +39,12 @@ public class UsuarioDAOTestCase {
         assertNotNull(this.usuarioDAO.ler("01234567891"));
     }
 
+    @Test
     public void apagarUsuario() {
         assertNotNull(this.usuarioDAO.apagar("01234567891"));
     }
 
+    @Test
     public void lerTodosUsuarios() {
         assertNotNull(this.usuarioDAO.lerTodosUsuarios());
     }
