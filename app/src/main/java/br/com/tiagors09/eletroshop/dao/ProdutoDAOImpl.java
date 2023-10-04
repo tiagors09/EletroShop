@@ -2,16 +2,38 @@ package br.com.tiagors09.eletroshop.dao;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
+import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
+import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class ProdutoDAOImpl implements ProdutoDAO{
-    private HashMap<UUID,Produto> produtos;
+    private Map<UUID,Produto> produtos;
     private static ProdutoDAO instance;
 
     private ProdutoDAOImpl() {
-        this.produtos = new HashMap<UUID,Produto>();
+        this.produtos = new HashMap<>();
+
+        Usuario detentor = new Usuario(
+                "01234567891",
+                "Tiago Rodrigues Sousa",
+                "28/01/2001",
+                new Localizacao(3.1000, 4.000),
+                "Vendedor de produtos usados de Quixadá",
+                "tiagorodriguessousa9@gmail.com",
+                "SenhaTeste123"
+        );
+
+        Produto produto = new Produto(
+                "Geladeira frost free",
+                300.00,
+                detentor,
+                "Geladeira novinha, sem problema, branca, 2015"
+        );
+
+        this.salvar(produto);
     }
 
     public static ProdutoDAO getInstance() {
