@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import br.com.tiagors09.eletroshop.enums.ProdutoCategoria;
 import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
@@ -30,7 +31,8 @@ public class ProdutoDAOImpl implements ProdutoDAO{
                 "Geladeira frost free",
                 300.00,
                 detentor,
-                "Geladeira novinha, sem problema, branca, 2015"
+                "Geladeira novinha, sem problema, branca, 2015",
+                ProdutoCategoria.COZINHA
         );
 
         this.salvar(produto);
