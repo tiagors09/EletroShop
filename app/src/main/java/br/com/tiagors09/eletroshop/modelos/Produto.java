@@ -2,6 +2,7 @@ package br.com.tiagors09.eletroshop.modelos;
 
 import java.util.UUID;
 
+import br.com.tiagors09.eletroshop.enums.ProdutoCategoria;
 import br.com.tiagors09.eletroshop.enums.StatusProduto;
 
 public class Produto {
@@ -11,14 +12,15 @@ public class Produto {
     private Usuario detentor;
     private String descricao;
     private StatusProduto statusProduto;
-
-    public Produto(String titulo, double preco, Usuario detentor, String descricao) {
+    private ProdutoCategoria produtoCategoria;
+    public Produto(String titulo, double preco, Usuario detentor, String descricao, ProdutoCategoria produtoCategoria) {
         this.ID = UUID.randomUUID();
         this.titulo = titulo;
         this.preco = preco;
         this.detentor = detentor;
         this.descricao = descricao;
         this.statusProduto = StatusProduto.A_VENDA;
+        this.produtoCategoria = produtoCategoria;
     }
 
     public UUID getID() {
@@ -73,7 +75,8 @@ public class Produto {
                 ", preco=" + preco +
                 ", detentor=" + detentor +
                 ", descricao='" + descricao + '\'' +
-                ", statusProduto=" + statusProduto +
+                ", statusProduto=" + statusProduto.getStatus() + '\n' +
+                ", produtoCategoria=" + produtoCategoria.getCategoria() +
                 '}';
     }
 }
