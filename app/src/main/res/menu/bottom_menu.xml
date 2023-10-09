@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/menu_item_home"
+        android:contentDescription="@string/menu_item_home" />
+
+    <item
+        android:id="@+id/meus_produtos"
+        android:icon="@drawable/baseline_archive_24"
+        android:title="@string/menu_item_meus_produtos"
+        android:contentDescription="@string/menu_item_meus_produtos" />
+
+    <item
+        android:id="@+id/carrinho"
+        android:icon="@drawable/baseline_shopping_cart_24"
+        android:title="@string/menu_item_carrinho"
+        android:contentDescription="@string/menu_item_carrinho" />
+
+    <item
+        android:id="@+id/favoritos"
+        android:icon="@drawable/baseline_favorite_24"
+        android:title="@string/menu_item_favoritos"
+        android:contentDescription="@string/menu_item_favoritos" />
+
+    <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="@string/menu_item_perfil"
+        android:contentDescription="@string/menu_item_perfil" />
+</menu>
