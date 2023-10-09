@@ -13,10 +13,10 @@
         android:theme="@style/Theme.App.Starting"
         tools:targetApi="31">
         <activity
-            android:name=".ExibicaoProdutos"
+            android:name=".fragments.ExibicaoProdutos"
             android:exported="false" />
         <activity
-            android:name=".EdicaoDeProduto"
+            android:name=".fragments.EdicaoDeProduto"
             android:exported="false" />
         <activity
             android:name=".AnuncioDeProduto"
