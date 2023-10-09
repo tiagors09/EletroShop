@@ -56,4 +56,5 @@
     <string name="menu_item_carrinho">Carrinho</string>
     <string name="menu_item_favoritos">Favoritos</string>
     <string name="menu_item_perfil">Perfil</string>
+    <string name="label_buscar_produto">Buscar Produto</string>
 </resources>
