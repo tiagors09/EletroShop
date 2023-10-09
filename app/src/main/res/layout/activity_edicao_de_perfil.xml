@@ -7,7 +7,7 @@
     android:layout_marginTop="20dp"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".EdicaoDePerfil">
+    tools:context=".activities.EdicaoDePerfil">
 
     <TextView
         android:id="@+id/textLabelEditarPerfil"
