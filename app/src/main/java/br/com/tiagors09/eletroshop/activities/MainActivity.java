@@ -1,16 +1,16 @@
-package br.com.tiagors09.eletroshop;
+package br.com.tiagors09.eletroshop.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.fragments.ExibicaoProdutos;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
