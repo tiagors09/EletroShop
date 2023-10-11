@@ -21,7 +21,6 @@
         android:layout_alignParentBottom="true"
         app:backgroundTint="@color/lime_focus"
         app:itemIconTint="@color/white"
-        app:itemRippleColor="@color/orange"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_menu" />
 
