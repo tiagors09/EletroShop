@@ -1,41 +1,16 @@
 package br.com.tiagors09.eletroshop.dao;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.com.tiagors09.eletroshop.enums.ProdutoCategoria;
-import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
-import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class ProdutoDAOImpl implements ProdutoDAO{
-    private Map<UUID,Produto> produtos;
+    private List<Produto> produtos;
     private static ProdutoDAO instance;
 
     private ProdutoDAOImpl() {
-        this.produtos = new HashMap<>();
-
-        Usuario detentor = new Usuario(
-                "01234567891",
-                "Tiago Rodrigues Sousa",
-                "28/01/2001",
-                new Localizacao(3.1000, 4.000),
-                "Vendedor de produtos usados de Quixadá",
-                "tiagorodriguessousa9@gmail.com",
-                "SenhaTeste123"
-        );
-
-        Produto produto = new Produto(
-                "Geladeira frost free",
-                300.00,
-                detentor,
-                "Geladeira novinha, sem problema, branca, 2015",
-                ProdutoCategoria.COZINHA
-        );
-
-        this.salvar(produto);
+        this.produtos = new ArrayList<Produto>();
     }
 
     public static ProdutoDAO getInstance() {
@@ -47,26 +22,22 @@ public class ProdutoDAOImpl implements ProdutoDAO{
     }
 
     @Override
-    public Produto salvar(Produto p) {
-        return produtos.put(p.getID(),p);
+    public boolean salvar(Produto p) {
+        return produtos.add(p);
     }
 
     @Override
-    public Produto apagar(UUID ID) {
-        if (produtos.containsKey(ID)) {
-            return produtos.remove(ID);
-        }
-
-        return null;
+    public Produto apagar(int ID) {
+        return produtos.remove(ID);
     }
 
     @Override
-    public Produto ler(UUID ID) {
+    public Produto ler(int ID) {
         return produtos.get(ID);
     }
 
     @Override
-    public Collection<Produto> lerTodos() {
-        return this.produtos.values();
+    public List<Produto> lerTodos() {
+        return this.produtos;
     }
 }
