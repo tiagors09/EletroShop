@@ -1,11 +1,15 @@
-package br.com.tiagors09.eletroshop;
+package br.com.tiagors09.eletroshop.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Login extends AppCompatActivity {
+import com.google.android.material.textfield.TextInputEditText;
 
+import br.com.tiagors09.eletroshop.R;
+
+public class Login extends AppCompatActivity {
+    TextInputEditText email, senha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

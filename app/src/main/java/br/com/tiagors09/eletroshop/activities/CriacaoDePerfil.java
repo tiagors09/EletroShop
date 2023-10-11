@@ -1,8 +1,10 @@
-package br.com.tiagors09.eletroshop;
+package br.com.tiagors09.eletroshop.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import br.com.tiagors09.eletroshop.R;
 
 public class CriacaoDePerfil extends AppCompatActivity {
 

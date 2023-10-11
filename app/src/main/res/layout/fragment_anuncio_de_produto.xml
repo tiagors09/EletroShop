@@ -7,14 +7,14 @@
     android:layout_marginTop="20dp"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".EdicaoDeProduto">
+    tools:context=".fragments.AnuncioDeProduto">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/label_editar_produto"
-        android:textSize="24sp"
+        android:text="@string/label_anunciar_produto"
+        android:textSize="24dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -29,18 +29,6 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="132dp"
-                app:cardCornerRadius="8dp">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@tools:sample/avatars" />
-            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/button3"
@@ -64,8 +52,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/placeholder_titulo"
-                android:text="@string/mock_titulo_produto" />
+                android:hint="@string/placeholder_titulo" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,8 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/placeholder_categoria"
-                android:text="@string/mock_categoria_produto" />
+                android:hint="@string/placeholder_categoria" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -91,8 +77,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/placeholder_preco"
-                android:text="@string/mock_preco_produto" />
+                android:hint="@string/placeholder_preco" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -106,8 +91,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:hint="@string/placeholder_descricao"
-                android:lines="5"
-                android:text="@string/mock_descricao_produto" />
+                android:lines="5" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -131,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_weight="1"
-                android:text="@string/btn_salvar"
+                android:text="@string/btn_anunciar_produto"
                 app:backgroundTint="@color/emerald" />
         </LinearLayout>
     </LinearLayout>

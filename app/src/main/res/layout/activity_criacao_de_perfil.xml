@@ -7,7 +7,7 @@
     android:layout_marginTop="20dp"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".CriacaoDePerfil">
+    tools:context=".activities.CriacaoDePerfil">
 
     <TextView
         android:id="@+id/textView"
