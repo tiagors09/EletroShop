@@ -6,24 +6,28 @@ import br.com.tiagors09.eletroshop.enums.ProdutoCategoria;
 import br.com.tiagors09.eletroshop.enums.StatusProduto;
 
 public class Produto {
-    private UUID ID;
+    private static int ID_COUNT = 0;
+    private int ID;
     private String titulo;
     private double preco;
     private Usuario detentor;
     private String descricao;
     private StatusProduto statusProduto;
+    private int foto;
     private ProdutoCategoria produtoCategoria;
-    public Produto(String titulo, double preco, Usuario detentor, String descricao, ProdutoCategoria produtoCategoria) {
-        this.ID = UUID.randomUUID();
+    public Produto(String titulo, double preco, Usuario detentor, String descricao, ProdutoCategoria produtoCategoria, int foto) {
+        ID_COUNT++;
+        this.ID = ID_COUNT;
         this.titulo = titulo;
         this.preco = preco;
         this.detentor = detentor;
         this.descricao = descricao;
         this.statusProduto = StatusProduto.A_VENDA;
         this.produtoCategoria = produtoCategoria;
+        this.foto = foto;
     }
 
-    public UUID getID() {
+    public int getID() {
         return ID;
     }
 
@@ -65,6 +69,14 @@ public class Produto {
 
     public void setStatusProduto(StatusProduto statusProduto) {
         this.statusProduto = statusProduto;
+    }
+
+    public int getFoto() {
+        return foto;
+    }
+
+    public void setFoto(int foto) {
+        this.foto = foto;
     }
 
     @Override
