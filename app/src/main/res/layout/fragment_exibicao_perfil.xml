@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.ExibicaoPerfil"
+    tools:context=".fragments.ExibicaoPerfil"
     android:fillViewport="true">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -45,8 +45,7 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:contentDescription="@string/descricao_foto_perfil"
-                android:src="@drawable/btn_edit_background"
-                app:srcCompat="@drawable/cr7_perfil" />
+                android:src="@drawable/btn_edit_background" />
         </androidx.cardview.widget.CardView>
 
         <Button
