@@ -1,17 +1,16 @@
 package br.com.tiagors09.eletroshop.dao;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
-    private HashMap<String,Usuario> usuarios;
+    private List<Usuario> usuarios;
     private static UsuarioDAO instance;
 
     private UsuarioDAOImpl() {
-        this.usuarios = new HashMap<String,Usuario>();
+        this.usuarios = new ArrayList<Usuario>();
     }
 
     public static UsuarioDAO getInstance() {
@@ -23,26 +22,35 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     }
 
     @Override
-    public Usuario salvar(Usuario u) {
-        return usuarios.put(u.getCPF(), u);
+    public boolean salvar(Usuario u) {
+        return usuarios.add(u);
     }
 
     @Override
     public Usuario apagar(String CPF) {
-        if (usuarios.containsKey(CPF)) {
-            return usuarios.remove(CPF);
-        }
+        Usuario u = this.usuarios
+                .stream()
+                .filter(usuario -> usuario
+                                .getCPF()
+                                .equals(CPF))
+                .findFirst()
+                .orElse(null);
 
-        return null;
+        return this.usuarios
+                .remove(this.usuarios.indexOf(u));
     }
 
     @Override
     public Usuario ler(String CPF) {
-        return usuarios.get(CPF);
+        return usuarios
+                .stream()
+                .filter(usuario -> usuario.getCPF().equals(CPF))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
-    public Collection<Usuario> lerTodosUsuarios() {
-        return this.usuarios.values();
+    public List<Usuario> lerTodosUsuarios() {
+        return this.usuarios;
     }
 }
