@@ -29,7 +29,8 @@ public class ProdutoDAOTestCase {
                 300.00,
                 detentor,
                 "Geladeira novinha, sem problema, branca, 2015",
-                ProdutoCategoria.COZINHA
+                ProdutoCategoria.COZINHA,
+                R.drawable.geladeira
         );
 
         assertNotNull(detentor);

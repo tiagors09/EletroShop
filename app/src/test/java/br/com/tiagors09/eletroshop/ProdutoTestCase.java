@@ -27,7 +27,8 @@ public class ProdutoTestCase {
                 300.00,
                 detentor,
                 "Geladeira novinha, sem problema, branca, 2015",
-                ProdutoCategoria.COZINHA
+                ProdutoCategoria.COZINHA,
+                R.drawable.geladeira
         );
 
         assertNotNull("Produto instanciado com sucesso!", produto);
