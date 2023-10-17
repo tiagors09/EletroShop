@@ -6,7 +6,7 @@
     <string name="btn_cadastrar">Cadastrar</string>
     <string name="btn_entrar">Entrar</string>
     <string name="btn_salvar">Salvar</string>
-    <string name="btn_visualizar_produto">Visualizar Produto</string>
+    <string name="btn_visualizar_produto">Visualizar</string>
     <string name="btn_editar_produto">Editar Produto</string>
     <string name="btn_remover_carrinho">Remover do Carrinho</string>
     <string name="btn_remover_produto">Remover Produto</string>
