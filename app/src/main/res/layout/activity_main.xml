@@ -20,6 +20,7 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         app:backgroundTint="@color/lime_focus"
+        app:itemActiveIndicatorStyle="@style/Custom.Indicator"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_menu" />
