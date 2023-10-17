@@ -8,14 +8,4 @@
     android:background="@color/lime_focus"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activities.SplashScreenCompraFinalizada">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:foregroundTint="#FFFFFF"
-        android:src="@tools:sample/avatars"
-        tools:srcCompat="@drawable/check_foreground"
-        app:tint="@color/white" />
-</LinearLayout>
+    tools:context=".activities.SplashScreenCompraFinalizada"/>
