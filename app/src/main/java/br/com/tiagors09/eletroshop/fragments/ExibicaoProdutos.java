@@ -108,7 +108,8 @@ public class ExibicaoProdutos extends Fragment {
         ProdutoAdapter produtoAdapter = new ProdutoAdapter(produtoDAO.lerTodos());
         recyclerViewProdutos.setAdapter(produtoAdapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(),2);
         recyclerViewProdutos.setLayoutManager(layoutManager);
 
         return view;
