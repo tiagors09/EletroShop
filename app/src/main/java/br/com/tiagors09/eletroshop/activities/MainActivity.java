@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        bottomNav = findViewById(R.id.bottomNav);
-        bottomNav.setOnNavigationItemSelectedListener(this);
+       // bottomNav = findViewById(R.id.bottomNav);
+       // bottomNav.setOnNavigationItemSelectedListener(this);
 
-        loadFragment(new ExibicaoProdutos());
+       // loadFragment(new ExibicaoProdutos());
     }
 
     @Override

@@ -8,4 +8,12 @@
     android:background="@color/lime_focus"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activities.SplashScreenCompraFinalizada"/>
+    tools:context=".activities.SplashScreenCompraFinalizada">
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heading_compra_finalizada"
+        android:textColor="@color/white" />
+</LinearLayout>

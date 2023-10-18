@@ -7,10 +7,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.ExibicaoPerfil"
     android:fillViewport="true">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/backgroundColor"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView2"
@@ -21,7 +22,6 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/roboto"
             android:text="@string/label_exibicao_perfil"
-            android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,15 +50,14 @@
 
         <Button
             android:id="@+id/buttonEditarImagem"
+            style="@style/buttonEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/black"
             android:fontFamily="@font/roboto"
             android:text="@string/btn_editar_imagem"
-            android:textColor="@color/white"
             app:icon="@drawable/btn_edit_foreground"
             app:iconGravity="textStart"
             app:iconSize="32dp"
@@ -76,7 +75,6 @@
             android:fontFamily="@font/roboto"
             android:gravity="clip_horizontal|center|center_vertical"
             android:text="@string/mock_nome_perfil"
-            android:textColor="@color/black"
             android:textSize="23sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +91,6 @@
             android:fontFamily="@font/roboto"
             android:gravity="center"
             android:text="@string/mock_cidade_perfil"
-            android:textColor="@color/black"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +106,6 @@
             android:fontFamily="@font/roboto"
             android:gravity="center"
             android:text="@string/mock_dataNasc_perfil"
-            android:textColor="@color/black"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +120,6 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/roboto"
             android:text="@string/label_bio_exibicao_perfil"
-            android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,6 +141,7 @@
 
         <Button
             android:id="@+id/button4"
+            style="@style/textButtonColor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
