@@ -10,12 +10,10 @@
     android:orientation="vertical"
     tools:context=".activities.SplashScreenCompraFinalizada">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:foregroundTint="#FFFFFF"
-        android:src="@tools:sample/avatars"
-        tools:srcCompat="@drawable/check_foreground"
-        app:tint="@color/white" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heading_compra_finalizada"
+        android:textColor="@color/white" />
 </LinearLayout>

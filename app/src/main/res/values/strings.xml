@@ -37,6 +37,7 @@
     <string name="label_bio">Bio</string>
     <string name="heading_carrinho_sem_produtos">Carrinho sem Produtos</string>
     <string name="heading_sem_favoritos">Sem Favoritos</string>
+    <string name="heading_compra_finalizada">Compra Finalizada</string>
     <string name="label_exibicao_perfil">Perfil</string>
     <string name="descricao_foto_perfil">Foto de perfil do usuário</string>
     <string name="mock_nome_perfil">Cristiano Ronaldo Jr.</string>
