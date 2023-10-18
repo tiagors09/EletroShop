@@ -53,9 +53,13 @@
     <string name="mock_preco_produto">679</string>
     <string name="mock_descricao_produto">Geladeira Consul Frost Free Duplex é a sua geladeira de qualidade com um sistema moderno de refrigeração em 25 níveis desde o neutro até o sub-zero. Contém diversos compartimentos divididos estratégicamente para as mais diversas finalidades desde guardar bebidas até uma ampla variedade de alimentos em formas e tamanhos diferentes dentro do espaço estabelecido.</string>
     <string name="menu_item_home">Home</string>
-    <string name="menu_item_meus_produtos">Meus produtos</string>
+    <string name="menu_item_meus_produtos">Ofertas</string>
     <string name="menu_item_carrinho">Carrinho</string>
     <string name="menu_item_favoritos">Favoritos</string>
     <string name="menu_item_perfil">Perfil</string>
     <string name="label_buscar_produto">Buscar Produto</string>
+    <string name="top_menu_vizualizar_produto_label">Vizualizar</string>
+    <string name="top_menu_adicionar_produto_label">Adicionar</string>
+    <string name="top_menu_editar_produto_label">Editar</string>
+    <string name="top_menu_remover_produto_label">Remover</string>
 </resources>
