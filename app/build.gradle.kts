@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "br.com.tiagors09.eletroshop"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "br.com.tiagors09.eletroshop"
         minSdk = 29
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
