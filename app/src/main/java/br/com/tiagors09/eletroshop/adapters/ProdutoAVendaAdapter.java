@@ -14,25 +14,25 @@ import java.util.List;
 import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 
-public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoHolder> {
+public class ProdutoAVendaAdapter extends RecyclerView.Adapter<ProdutoAVendaAdapter.ProdutoAVendaHolder> {
     private List<Produto> produtos;
 
-    public ProdutoAdapter(List<Produto> produtos) {
+    public ProdutoAVendaAdapter(List<Produto> produtos) {
         this.produtos = produtos;
     }
 
     @NonNull
     @Override
-    public ProdutoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProdutoAVendaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.produto, parent, false);
+                .inflate(R.layout.produto_a_venda, parent, false);
 
-        return new ProdutoHolder(view);
+        return new ProdutoAVendaHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProdutoHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProdutoAVendaHolder holder, int position) {
         Produto produto = produtos.get(position);
 
         holder.textViewTitulo.setText(produto.getTitulo());
@@ -45,11 +45,11 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoH
         return produtos.size();
     }
 
-    public class ProdutoHolder extends RecyclerView.ViewHolder {
+    public class ProdutoAVendaHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitulo, textViewPreco;
         private ImageView imageViewFoto;
 
-        public ProdutoHolder(@NonNull View itemView) {
+        public ProdutoAVendaHolder(@NonNull View itemView) {
             super(itemView);
 
             this.textViewTitulo = itemView.findViewById(R.id.textViewTitulo);
