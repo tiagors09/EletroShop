@@ -8,7 +8,6 @@
     <string name="btn_salvar">Salvar</string>
     <string name="btn_visualizar_produto">Visualizar</string>
     <string name="btn_editar_produto">Editar Produto</string>
-    <string name="btn_remover_carrinho">Remover do Carrinho</string>
     <string name="btn_remover_produto">Remover Produto</string>
     <string name="btn_cancelar">Cancelar</string>
     <string name="btn_voltar">Voltar</string>
@@ -57,4 +56,5 @@
     <string name="menu_item_favoritos">Favoritos</string>
     <string name="menu_item_perfil">Perfil</string>
     <string name="label_buscar_produto">Buscar Produto</string>
+    <string name="fragment_label_carrinho_vazio">Seu carrinho está vazio</string>
 </resources>
