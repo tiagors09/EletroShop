@@ -12,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting"
         tools:targetApi="31">
-        <activity android:name=".activities.Login"
-            android:exported="true"/>
+        <activity
+            android:name=".activities.SplashScreenCompraFinalizada"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Login"
+            android:exported="true" />
         <activity
             android:name=".fragments.MeusProdutos"
             android:exported="false" />
@@ -47,6 +51,7 @@
             android:name=".fragments.ExibicaoPerfil"
             android:exported="true"
             android:label="@string/title_activity_exibicao_perfil" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
