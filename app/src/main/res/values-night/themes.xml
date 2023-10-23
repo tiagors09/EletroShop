@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.EletroShop" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Base.Theme.EletroShop" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
   
     <!-- Customize your light theme here. -->
     <style name="backgroundColor">
