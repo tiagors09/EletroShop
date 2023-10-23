@@ -14,6 +14,6 @@ public class EdicaoDePerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edicao_de_perfil);
 
-        ImageView img = findViewById(R.id.imgPerfil);
+//        ImageView img = findViewById(R.id.imgPerfil);
     }
 }
