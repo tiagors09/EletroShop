@@ -57,4 +57,9 @@
     <string name="menu_item_favoritos">Favoritos</string>
     <string name="menu_item_perfil">Perfil</string>
     <string name="label_buscar_produto">Buscar Produto</string>
+    <string name="fragment_label_carrinho_vazio">Seu carrinho está vazio</string>
+    <string name="top_menu_vizualizar_produto_label">Vizualizar</string>
+    <string name="top_menu_adicionar_produto_label">Adicionar</string>
+    <string name="top_menu_editar_produto_label">Editar</string>
+    <string name="top_menu_remover_produto_label">Remover</string>
 </resources>
