@@ -3,8 +3,6 @@ package br.com.tiagors09.eletroshop.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +12,10 @@ import java.util.List;
 import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 
-public class ProdutoAVendaAdapter extends RecyclerView.Adapter<ProdutoHolder> {
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoHolder>{
     private List<Produto> produtos;
 
-    public ProdutoAVendaAdapter(List<Produto> produtos) {
+    public ProdutoAdapter(List<Produto> produtos) {
         this.produtos = produtos;
     }
 
@@ -26,11 +24,10 @@ public class ProdutoAVendaAdapter extends RecyclerView.Adapter<ProdutoHolder> {
     public ProdutoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.produto_a_venda, parent, false);
+                .inflate(R.layout.produto,parent,false);
 
         return new ProdutoHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ProdutoHolder holder, int position) {

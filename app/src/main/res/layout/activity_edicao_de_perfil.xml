@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EdicaoDePerfil">
+    tools:context=".activities.EdicaoDePerfil">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonEditarImagem"
                 style="@style/buttonEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

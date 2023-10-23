@@ -14,7 +14,7 @@ import java.util.List;
 import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 
-public class ProdutoEmOfertaAdapter extends RecyclerView.Adapter<ProdutoEmOfertaAdapter.ProdutoEmOfertaHolder>{
+public class ProdutoEmOfertaAdapter extends RecyclerView.Adapter<ProdutoHolder>{
     private List<Produto> produtos;
 
     public ProdutoEmOfertaAdapter(List<Produto> produtos) {
@@ -23,16 +23,16 @@ public class ProdutoEmOfertaAdapter extends RecyclerView.Adapter<ProdutoEmOferta
 
     @NonNull
     @Override
-    public ProdutoEmOfertaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProdutoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.produto_em_oferta, parent, false);
 
-        return new ProdutoEmOfertaHolder(view);
+        return new ProdutoHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProdutoEmOfertaHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProdutoHolder holder, int position) {
         Produto produto = produtos.get(position);
 
         holder.textViewTitulo.setText(produto.getTitulo());
@@ -43,18 +43,5 @@ public class ProdutoEmOfertaAdapter extends RecyclerView.Adapter<ProdutoEmOferta
     @Override
     public int getItemCount() {
         return produtos.size();
-    }
-
-    class ProdutoEmOfertaHolder extends RecyclerView.ViewHolder {
-        private TextView textViewTitulo, textViewPreco;
-        private ImageView imageViewFoto;
-
-        public ProdutoEmOfertaHolder(@NonNull View itemView) {
-            super(itemView);
-
-            this.textViewTitulo = itemView.findViewById(R.id.textViewTitulo);
-            this.textViewPreco = itemView.findViewById(R.id.textViewPreco);
-            this.imageViewFoto = itemView.findViewById(R.id.imageViewFoto);
-        }
     }
 }

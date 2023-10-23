@@ -36,7 +36,7 @@
                 app:cardCornerRadius="100dp" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonEditarImagem"
                 style="@style/buttonEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

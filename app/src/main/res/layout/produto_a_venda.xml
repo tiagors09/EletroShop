@@ -46,12 +46,16 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/buttonRemoverCarrinho"
+                android:id="@+id/buttonEditarProduto"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/orange"
                 android:text="@string/btn_visualizar_produto"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="@color/white"
+                android:textColorLink="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 

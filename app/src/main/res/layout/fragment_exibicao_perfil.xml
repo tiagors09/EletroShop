@@ -49,7 +49,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/buttonEditarImagem"
+            android:id="@+id/buttonEditarPerfil"
             style="@style/buttonEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/btn_editar_imagem"
+            android:text="@string/label_editar_perfil"
             app:icon="@drawable/btn_edit_foreground"
             app:iconGravity="textStart"
             app:iconSize="32dp"
@@ -79,7 +79,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonEditarImagem" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonEditarPerfil" />
 
         <TextView
             android:id="@+id/textViewLocalizacao"
@@ -140,7 +140,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonLogout"
             style="@style/textButtonColor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
