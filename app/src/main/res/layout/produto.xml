@@ -30,23 +30,29 @@
             android:text="TextView"
             android:textSize="13sp" />
 
-        <TextView
-            android:id="@+id/textViewPreco"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="TextView"
-            android:textSize="23sp"
-            android:textStyle="bold" />
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/buttonVizualizar"
-            style="@style/textButtonColor"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="@string/btn_visualizar_produto" />
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:src="@drawable/baseline_edit_80" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:src="@drawable/baseline_delete_80" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
