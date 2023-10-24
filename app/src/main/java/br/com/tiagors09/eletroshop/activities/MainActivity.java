@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import br.com.tiagors09.eletroshop.R;
-import br.com.tiagors09.eletroshop.fragments.Carrinho;
-import br.com.tiagors09.eletroshop.fragments.ExibicaoPerfil;
-import br.com.tiagors09.eletroshop.fragments.ExibicaoProdutos;
-import br.com.tiagors09.eletroshop.fragments.Favoritos;
-import br.com.tiagors09.eletroshop.fragments.MeusProdutos;
+import br.com.tiagors09.eletroshop.fragments.CarrinhoFragment;
+import br.com.tiagors09.eletroshop.fragments.ExibicaoPerfilFragment;
+import br.com.tiagors09.eletroshop.fragments.ExibicaoProdutosFragment;
+import br.com.tiagors09.eletroshop.fragments.FavoritosFragment;
+import br.com.tiagors09.eletroshop.fragments.MeusProdutosFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     private BottomNavigationView bottomNav;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNav = findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(this);
 
-        loadFragment(new ExibicaoProdutos());
+        loadFragment(new ExibicaoProdutosFragment());
     }
 
     @Override
@@ -37,22 +37,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Fragment fragment = null;
 
         if (item.getItemId() == R.id.home)
-            loadFragment(new ExibicaoProdutos());
+            loadFragment(new ExibicaoProdutosFragment());
 
         if (item.getItemId() == R.id.meus_produtos) {
-            loadFragment(new MeusProdutos());
+            loadFragment(new MeusProdutosFragment());
         }
 
         if (item.getItemId() == R.id.carrinho) {
-            loadFragment(new Carrinho());
+            loadFragment(new CarrinhoFragment());
         }
 
         if (item.getItemId() == R.id.favoritos) {
-            loadFragment(new Favoritos());
+            loadFragment(new FavoritosFragment());
         }
 
         if (item.getItemId() == R.id.perfil) {
-            loadFragment(new ExibicaoPerfil());
+            loadFragment(new ExibicaoPerfilFragment());
         }
 
         return true;
