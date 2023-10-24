@@ -17,27 +17,19 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.SplashScreenCompraFinalizada"
+            android:name=".activities.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.Login"
+            android:name=".fragments.MeusProdutosFragment"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".fragments.MeusProdutos"
+            android:name=".fragments.ExibicaoProdutosFragment"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".fragments.ExibicaoProdutos"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".activities.EdicaoDeProduto"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".activities.AnuncioDeProduto"
+            android:name=".activities.AnuncioDeProdutoActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
@@ -50,17 +42,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.CriacaoDePerfil"
+            android:name=".activities.CriacaoDePerfilActivity"
             android:exported="true"
             android:label="@string/title_activity_criacao_perfil"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.EdicaoDePerfil"
+            android:name=".activities.EdicaoDePerfilActivity"
             android:exported="true"
             android:label="@string/title_activity_edicao_perfil"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".fragments.ExibicaoPerfil"
+            android:name=".fragments.ExibicaoPerfilFragment"
             android:exported="true"
             android:label="@string/title_activity_exibicao_perfil"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
