@@ -6,4 +6,4 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".activities.AnuncioDeProduto"/>
+    tools:context=".activities.AnuncioDeProdutoActivity"/>
