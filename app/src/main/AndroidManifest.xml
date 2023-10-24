@@ -17,9 +17,6 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.Produto"
-            android:exported="false" />
-        <activity
             android:name=".activities.SplashScreenCompraFinalizada"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
