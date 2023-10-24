@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import br.com.tiagors09.eletroshop.R;
 
-public class Favoritos extends Fragment {
+public class FavoritosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

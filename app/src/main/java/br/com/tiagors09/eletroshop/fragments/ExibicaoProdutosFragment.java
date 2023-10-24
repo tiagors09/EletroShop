@@ -18,7 +18,7 @@ import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
-public class ExibicaoProdutos extends Fragment {
+public class ExibicaoProdutosFragment extends Fragment {
     private RecyclerView recyclerViewProdutos;
     private ProdutoDAO produtoDAO;
 

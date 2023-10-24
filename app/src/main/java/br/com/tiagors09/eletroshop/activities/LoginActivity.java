@@ -8,7 +8,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import br.com.tiagors09.eletroshop.R;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     TextInputEditText email, senha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

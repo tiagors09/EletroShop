@@ -8,12 +8,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import br.com.tiagors09.eletroshop.R;
 
-public class EdicaoDePerfil extends AppCompatActivity {
+public class EdicaoDePerfilActivity extends AppCompatActivity {
     Button buttonEditarPerfil;
 
     @Override
