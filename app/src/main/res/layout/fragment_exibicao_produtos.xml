@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ExibicaoProdutos">
+    tools:context=".fragments.ExibicaoProdutosFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
@@ -21,7 +20,6 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/barraPesquisa"
-            style="@style/inputColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/baseline_search_24"

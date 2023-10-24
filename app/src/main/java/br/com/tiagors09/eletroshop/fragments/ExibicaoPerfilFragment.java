@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.com.tiagors09.eletroshop.R;
-import br.com.tiagors09.eletroshop.activities.EdicaoDePerfil;
-import br.com.tiagors09.eletroshop.activities.Login;
+import br.com.tiagors09.eletroshop.activities.EdicaoDePerfilActivity;
+import br.com.tiagors09.eletroshop.activities.LoginActivity;
 
-public class ExibicaoPerfil extends Fragment {
+public class ExibicaoPerfilFragment extends Fragment {
     private Button buttonLogout, buttonEditarPerfil;
 
     @Override
@@ -34,7 +34,7 @@ public class ExibicaoPerfil extends Fragment {
         buttonEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EdicaoDePerfil.class);
+                Intent intent = new Intent(view.getContext(), EdicaoDePerfilActivity.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +42,7 @@ public class ExibicaoPerfil extends Fragment {
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),Login.class);
+                Intent intent = new Intent(view.getContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });

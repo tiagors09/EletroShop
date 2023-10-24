@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import br.com.tiagors09.eletroshop.R;
 
-public class CriacaoDePerfil extends AppCompatActivity {
+public class CriacaoDePerfilActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

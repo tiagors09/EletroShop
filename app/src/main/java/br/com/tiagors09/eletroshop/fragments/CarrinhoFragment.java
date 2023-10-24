@@ -20,7 +20,7 @@ import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
-public class Carrinho extends Fragment {
+public class CarrinhoFragment extends Fragment {
     private RecyclerView recyclerViewCarrinho;
     private List<Produto> carrinho;
     @Override

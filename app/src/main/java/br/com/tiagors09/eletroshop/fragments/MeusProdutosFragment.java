@@ -21,7 +21,7 @@ import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
-public class MeusProdutos extends Fragment {
+public class MeusProdutosFragment extends Fragment {
     private RecyclerView recyclerViewMeusProdutos;
     private List<Produto> meusProdutos;
     @Override

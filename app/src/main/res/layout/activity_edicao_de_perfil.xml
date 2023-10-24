@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.EdicaoDePerfil">
+    tools:context=".activities.EdicaoDePerfilActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +45,6 @@
 
             <Button
                 android:id="@+id/buttonEditarImagem"
-                style="@style/buttonEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
