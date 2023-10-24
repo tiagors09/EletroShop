@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.tiagors09.eletroshop.R;
-import br.com.tiagors09.eletroshop.adapters.ProdutoAdapter;
+import br.com.tiagors09.eletroshop.adapters.MeusProdutosAdapter;
 import br.com.tiagors09.eletroshop.enums.ProdutoCategoria;
 import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
@@ -42,7 +42,7 @@ public class MeusProdutos extends Fragment {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(view.getContext(), 2);
         recyclerViewMeusProdutos.setLayoutManager(layoutManager);
 
-        recyclerViewMeusProdutos.setAdapter(new ProdutoAdapter(this.meusProdutos));
+        recyclerViewMeusProdutos.setAdapter(new MeusProdutosAdapter(this.meusProdutos));
 
         return view;
     }

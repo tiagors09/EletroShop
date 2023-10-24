@@ -8,6 +8,7 @@ import br.com.tiagors09.eletroshop.enums.StatusProduto;
 public class Produto {
     private static int ID_COUNT = 0;
     private int ID;
+    private UUID uuid;
     private String titulo;
     private double preco;
     private Usuario detentor;
@@ -18,6 +19,7 @@ public class Produto {
     public Produto(String titulo, double preco, Usuario detentor, String descricao, ProdutoCategoria produtoCategoria, int foto) {
         ID_COUNT++;
         this.ID = ID_COUNT;
+        this.uuid = UUID.randomUUID();
         this.titulo = titulo;
         this.preco = preco;
         this.detentor = detentor;
@@ -79,16 +81,22 @@ public class Produto {
         this.foto = foto;
     }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +
                 "ID=" + ID +
+                ", uuid=" + uuid +
                 ", titulo='" + titulo + '\'' +
                 ", preco=" + preco +
                 ", detentor=" + detentor +
                 ", descricao='" + descricao + '\'' +
-                ", statusProduto=" + statusProduto.getStatus() + '\n' +
-                ", produtoCategoria=" + produtoCategoria.getCategoria() +
+                ", statusProduto=" + statusProduto +
+                ", foto=" + foto +
+                ", produtoCategoria=" + produtoCategoria +
                 '}';
     }
 }

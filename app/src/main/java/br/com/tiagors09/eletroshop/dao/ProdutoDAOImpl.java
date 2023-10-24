@@ -2,6 +2,7 @@ package br.com.tiagors09.eletroshop.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.tiagors09.eletroshop.modelos.Produto;
 
@@ -34,6 +35,14 @@ public class ProdutoDAOImpl implements ProdutoDAO{
     @Override
     public Produto ler(int ID) {
         return produtos.get(ID);
+    }
+
+    public Produto ler(UUID uuid) {
+        return produtos
+                .stream()
+                .filter((produto) -> produto.getUuid().equals(uuid))
+                .findFirst()
+                .get();
     }
 
     @Override
