@@ -13,4 +13,8 @@ import android.view.ViewGroup;
 import br.com.tiagors09.eletroshop.R;
 
 public class AnuncioDeProduto extends AppCompatActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }
