@@ -85,6 +85,14 @@ public class Produto {
         return uuid;
     }
 
+    public void setProdutoCategoria(ProdutoCategoria produtoCategoria) {
+        this.produtoCategoria = produtoCategoria;
+    }
+
+    public ProdutoCategoria getProdutoCategoria() {
+        return produtoCategoria;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +
