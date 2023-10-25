@@ -44,7 +44,7 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:contentDescription="@string/descricao_foto_perfil"
-                android:src="@drawable/btn_edit_background" />
+                android:src="@drawable/cr7_perfil" />
         </androidx.cardview.widget.CardView>
 
         <Button
