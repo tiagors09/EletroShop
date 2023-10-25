@@ -40,7 +40,7 @@ public class ProdutoEmOfertaAdapter extends RecyclerView.Adapter<ProdutoEmOferta
         Produto produto = produtos.get(position);
 
         holder.textViewTitulo.setText(produto.getTitulo());
-        holder.textViewPreco.setText(String.valueOf(produto.getPreco()));
+        holder.textViewPreco.setText("R$ " + String.valueOf(produto.getPreco()));
         holder.imageViewFoto.setImageResource(produto.getFoto());
     }
 
