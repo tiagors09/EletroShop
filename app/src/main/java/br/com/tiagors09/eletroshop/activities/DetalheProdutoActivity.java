@@ -36,7 +36,7 @@ public class DetalheProdutoActivity extends AppCompatActivity {
         Produto produto = produtoDAO.ler(idProduto);
 
         textViewTitulo.setText(produto.getTitulo());
-        textViewPreco.setText(String.valueOf(produto.getPreco()));
+        textViewPreco.setText("R$ " + String.valueOf(produto.getPreco()));
         textViewDescricao.setText(produto.getDescricao());
         imageViewFoto.setImageResource(produto.getFoto());
     }
