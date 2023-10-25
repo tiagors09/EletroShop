@@ -12,8 +12,9 @@ public class Usuario {
     private String bio;
     private String email;
     private String password;
+    private int fotoPerfil;
 
-    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password) {
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password, int fotoPerfil) {
         this.CPF = CPF;
         this.nome = nome;
 
@@ -85,16 +86,25 @@ public class Usuario {
         return false;
     }
 
+    public void setFotoPerfil(int fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public int getFotoPerfil() {
+        return fotoPerfil;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
-                "CPF=" + CPF +
+                "CPF='" + CPF + '\'' +
                 ", nome='" + nome + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", local=" + local +
                 ", bio='" + bio + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", fotoPerfil=" + fotoPerfil +
                 '}';
     }
 }

@@ -61,7 +61,8 @@ public class CarrinhoFragment extends Fragment {
                 new Localizacao(3.1000, 4.000),
                 "Vendedor de produtos usados de Quixadá",
                 "tiagorodriguessousa9@gmail.com",
-                "SenhaTeste123"
+                "SenhaTeste123",
+                R.drawable.icon
         );
 
         carrinho.add(new Produto(
