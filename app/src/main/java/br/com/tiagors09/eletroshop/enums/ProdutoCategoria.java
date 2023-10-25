@@ -13,10 +13,16 @@ public enum ProdutoCategoria {
 
     private String categoria;
 
-    ProdutoCategoria(String cozinha) {
+    ProdutoCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getCategoria() {
+        return this.categoria;
+    }
+
+    @Override
+    public String toString() {
         return this.categoria;
     }
 }
