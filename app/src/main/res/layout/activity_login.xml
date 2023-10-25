@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonSalvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -96,7 +96,8 @@
             android:id="@+id/senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/placeholder_senha" />
+            android:hint="@string/placeholder_senha"
+            android:inputType="text|textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
