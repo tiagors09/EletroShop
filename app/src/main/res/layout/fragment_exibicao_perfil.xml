@@ -8,36 +8,30 @@
     tools:context=".fragments.ExibicaoPerfilFragment"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
             android:fontFamily="@font/roboto"
             android:text="@string/label_exibicao_perfil"
             android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
-            app:cardCornerRadius="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            app:cardCornerRadius="100dp">
 
             <ImageView
                 android:id="@+id/imageViewPerfil"
@@ -45,27 +39,20 @@
                 android:layout_height="128dp"
                 android:contentDescription="@string/descricao_foto_perfil"
                 android:src="@drawable/cr7_perfil" />
+
         </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/buttonEditarPerfil"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/label_editar_perfil"
-            app:icon="@drawable/btn_edit_foreground"
-            app:iconGravity="textStart"
-            app:iconSize="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewPerfil" />
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/label_editar_perfil" />
 
         <TextView
             android:id="@+id/textViewNome"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
@@ -74,14 +61,11 @@
             android:gravity="clip_horizontal|center|center_vertical"
             android:text="@string/mock_nome_perfil"
             android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonEditarPerfil" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewLocalizacao"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
@@ -89,14 +73,11 @@
             android:fontFamily="@font/roboto"
             android:gravity="center"
             android:text="@string/mock_cidade_perfil"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNome" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textViewDataNasc"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
@@ -104,14 +85,11 @@
             android:fontFamily="@font/roboto"
             android:gravity="center"
             android:text="@string/mock_dataNasc_perfil"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLocalizacao" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
@@ -119,37 +97,28 @@
             android:fontFamily="@font/roboto"
             android:text="@string/label_bio_exibicao_perfil"
             android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDataNasc" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewBio"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="210dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/mock_bio_exibicao_perfil"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            android:text="@string/mock_bio_exibicao_perfil" />
 
         <Button
             android:id="@+id/buttonLogout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/red"
             android:fontFamily="@font/roboto"
-            android:text="@string/btn_logout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewBio" />
+            android:text="@string/btn_logout" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
