@@ -62,4 +62,7 @@
     <string name="top_menu_adicionar_produto_label">Adicionar</string>
     <string name="top_menu_editar_produto_label">Editar</string>
     <string name="top_menu_remover_produto_label">Remover</string>
+    <string name="msg_remocao_produto">Deseja remover esse produto?</string>
+    <string name="confirmacao">Sim</string>
+    <string name="negacao">Não</string>
 </resources>

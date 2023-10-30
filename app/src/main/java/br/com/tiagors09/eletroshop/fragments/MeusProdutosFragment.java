@@ -25,6 +25,7 @@ import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class MeusProdutosFragment extends Fragment {
     private RecyclerView recyclerViewMeusProdutos;
+    private MeusProdutosAdapter meusProdutosAdapter;
     private ProdutoDAO produtoDAO;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,8 +43,16 @@ public class MeusProdutosFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(view.getContext(), 2);
         recyclerViewMeusProdutos.setLayoutManager(layoutManager);
 
-        recyclerViewMeusProdutos.setAdapter(new MeusProdutosAdapter(produtoDAO.lerTodos()));
+        meusProdutosAdapter = new MeusProdutosAdapter(produtoDAO.lerTodos());
+
+        recyclerViewMeusProdutos.setAdapter(meusProdutosAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        meusProdutosAdapter.notifyDataSetChanged();
     }
 }
