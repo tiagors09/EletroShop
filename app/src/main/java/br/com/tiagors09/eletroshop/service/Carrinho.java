@@ -10,11 +10,11 @@ import br.com.tiagors09.eletroshop.modelos.Produto;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class Carrinho {
-    private List<Produto> carrinho;
+    private List<Produto> produtos;
     private static Carrinho instance;
 
     private Carrinho() {
-        carrinho = new ArrayList<>();
+        produtos = new ArrayList<>();
 
         Usuario detentor = new Usuario(
                 "01234567891",
@@ -27,7 +27,7 @@ public class Carrinho {
                 R.drawable.icon
         );
 
-        carrinho.add(new Produto(
+        produtos.add(new Produto(
                 "Geladeira frost free",
                 300.00,
                 detentor,
@@ -36,7 +36,7 @@ public class Carrinho {
                 R.drawable.geladeira
         ));
 
-        carrinho.add(new Produto(
+        produtos.add(new Produto(
                 "Máquina de lavar",
                 250.00,
                 detentor,
@@ -45,7 +45,7 @@ public class Carrinho {
                 R.drawable.maquina_de_lavar
         ));
 
-        carrinho.add(new Produto(
+        produtos.add(new Produto(
                 "Notebook",
                 800.00,
                 detentor,
@@ -54,7 +54,7 @@ public class Carrinho {
                 R.drawable.notebook
         ));
 
-        carrinho.add(new Produto(
+        produtos.add(new Produto(
                 "Geladeira frost free",
                 300.00,
                 detentor,
@@ -63,7 +63,7 @@ public class Carrinho {
                 R.drawable.geladeira
         ));
 
-        carrinho.add(new Produto(
+        produtos.add(new Produto(
                 "Máquina de lavar",
                 250.00,
                 detentor,
@@ -72,7 +72,7 @@ public class Carrinho {
                 R.drawable.maquina_de_lavar
         ));
 
-        carrinho.add(new Produto(
+        produtos.add(new Produto(
                 "Notebook",
                 800.00,
                 detentor,
@@ -89,7 +89,16 @@ public class Carrinho {
         return instance;
     }
 
-    public List<Produto> produtos() {
-        return this.carrinho;
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
+    public double valorTotal() {
+        double total = 0.0;
+
+        for (Produto p : produtos) {
+            total += p.getPreco();
+        }
+
+        return total;
     }
 }
