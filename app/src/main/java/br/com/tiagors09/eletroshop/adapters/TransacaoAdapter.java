@@ -36,7 +36,7 @@ public class TransacaoAdapter extends RecyclerView.Adapter<TransacaoAdapter.Tran
         Transacao t = transacoes.get(position);
 
         holder.textViewTransacaoId.setText(String.valueOf(t.getId()));
-        holder.textViewTransacaoValor.setText(String.valueOf(t.getValor()));
+        holder.textViewTransacaoValor.setText(String.format("R$ %.2f", t.getValor()));
         holder.textViewTransacaoData.setText(String.valueOf(t.getData()));
     }
 
