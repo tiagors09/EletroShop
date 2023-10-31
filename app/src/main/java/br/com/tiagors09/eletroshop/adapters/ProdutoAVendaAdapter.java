@@ -42,7 +42,7 @@ public class ProdutoAVendaAdapter extends RecyclerView.Adapter<ProdutoAVendaAdap
 
         holder.setUuid(produto.getUuid());
         holder.textViewTitulo.setText(produto.getTitulo());
-        holder.textViewPreco.setText("R$ " + String.valueOf(produto.getPreco()));
+        holder.textViewPreco.setText(String.format("R$ %.2f", produto.getPreco()));
         holder.imageViewFoto.setImageResource(produto.getFoto());
     }
 
@@ -63,7 +63,7 @@ public class ProdutoAVendaAdapter extends RecyclerView.Adapter<ProdutoAVendaAdap
             this.textViewTitulo = itemView.findViewById(R.id.textViewTitulo);
             this.textViewPreco = itemView.findViewById(R.id.textViewPreco);
             this.imageViewFoto = itemView.findViewById(R.id.imageViewFoto);
-            this.buttonEditarProduto = itemView.findViewById(R.id.buttonEditarProduto);
+            this.buttonEditarProduto = itemView.findViewById(R.id.buttonVizualizarProduto);
 
             buttonEditarProduto.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -14,6 +14,19 @@ public class Usuario {
     private String password;
     private int fotoPerfil;
 
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password) {
+        this.CPF = CPF;
+        this.nome = nome;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNascimento = LocalDate.parse(dataNascimento,dateTimeFormatter);
+
+        this.local = local;
+        this.bio = bio;
+        this.email = email;
+        this.password = password;
+    }
+
     public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password, int fotoPerfil) {
         this.CPF = CPF;
         this.nome = nome;
@@ -25,6 +38,7 @@ public class Usuario {
         this.bio = bio;
         this.email = email;
         this.password = password;
+        this.fotoPerfil = fotoPerfil;
     }
 
     public String getCPF() { return CPF; }
