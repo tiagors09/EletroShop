@@ -9,7 +9,7 @@ import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Produto;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
-public class Carrinho {
+public class Carrinho implements ICarrinho{
     private List<Produto> produtos;
     private static Carrinho instance;
 
@@ -89,9 +89,22 @@ public class Carrinho {
         return instance;
     }
 
+    @Override
+    public boolean adicionar(Produto p) {
+        return produtos.add(p);
+    }
+
+    @Override
+    public void remover(int pos) {
+        produtos.remove(pos);
+    }
+
+    @Override
     public List<Produto> getProdutos() {
         return this.produtos;
     }
+
+    @Override
     public double valorTotal() {
         double total = 0.0;
 
