@@ -14,13 +14,16 @@ import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.dao.ProdutoDAO;
 import br.com.tiagors09.eletroshop.dao.ProdutoDAOImpl;
 import br.com.tiagors09.eletroshop.modelos.Produto;
+import br.com.tiagors09.eletroshop.service.Carrinho;
+import br.com.tiagors09.eletroshop.service.ICarrinho;
 
 public class DetalheProdutoActivity extends AppCompatActivity {
     private Bundle extras;
     private TextView textViewTitulo, textViewPreco, textViewDescricao;
     private ImageView imageViewFoto;
-    private Button buttonVoltar;
+    private Button buttonVoltar, buttonAdicionarAoCarrinho;
     private ProdutoDAO produtoDAO;
+    private ICarrinho iCarrinho;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class DetalheProdutoActivity extends AppCompatActivity {
         textViewDescricao = findViewById(R.id.textViewDescricao);
         imageViewFoto = findViewById(R.id.imageViewFoto);
         buttonVoltar = findViewById(R.id.buttonVoltar);
+        buttonAdicionarAoCarrinho = findViewById(R.id.buttonAdicionarAoCarrinho);
 
         extras = getIntent().getExtras();
         UUID idProduto = (UUID) extras.getSerializable("ID_PRODUTO");
@@ -44,9 +48,19 @@ public class DetalheProdutoActivity extends AppCompatActivity {
         textViewDescricao.setText(produto.getDescricao());
         imageViewFoto.setImageResource(produto.getFoto());
 
+        iCarrinho = Carrinho.getInstance();
+
         buttonVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
+
+        buttonAdicionarAoCarrinho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iCarrinho.adicionar(produto);
                 finish();
             }
         });
