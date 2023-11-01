@@ -4,6 +4,6 @@
         <item name="windowSplashScreenBackground">@color/lime_focus</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/icon</item>
         <item name="windowSplashScreenAnimationDuration">2000</item>
-        <item name="postSplashScreenTheme">@style/Theme.Material3.DayNight.NoActionBar</item>
+        <item name="postSplashScreenTheme">@style/Theme.EletroShop</item>
     </style>
 </resources>
