@@ -56,6 +56,7 @@ public class EdicaoDePerfilActivity extends AppCompatActivity {
         textInputEditTextEmail.setText(usuario.getEmail());
 //        textInputEditTextSenha.setText(usuario.get);
         textInputEditTextNomeBio.setText(usuario.getBio());
+        imgPerfil.setImageResource(usuario.getFotoPerfil());
 
         buttonEditarImagem.setOnClickListener(new View.OnClickListener() {
             @Override
