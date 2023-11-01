@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -43,6 +45,22 @@ public class MeusProdutosAdapter extends RecyclerView.Adapter<MeusProdutosAdapte
         holder.textViewTitulo.setText(produto.getTitulo());
         holder.textViewPreco.setText(String.format("R$ %.2f", produto.getPreco()));
         holder.imageViewFoto.setImageResource(produto.getFoto());
+
+        holder.imageButtonDeletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar
+                        .make(v.getContext(), v, "Deseja remover produto?", Snackbar.LENGTH_SHORT)
+                        .setAction("SIM", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                produtos.remove(holder.getBindingAdapterPosition());
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .show();
+            }
+        });
     }
 
     @Override
@@ -62,8 +80,8 @@ public class MeusProdutosAdapter extends RecyclerView.Adapter<MeusProdutosAdapte
             this.textViewTitulo = itemView.findViewById(R.id.textViewTitulo);
             this.textViewPreco = itemView.findViewById(R.id.textViewPreco);
             this.imageViewFoto = itemView.findViewById(R.id.imageViewFoto);
-
-            imageButtonEditar = itemView.findViewById(R.id.imageButtonEditar);
+            this.imageButtonEditar = itemView.findViewById(R.id.imageButtonEditar);
+            this.imageButtonDeletar = itemView.findViewById(R.id.imageButtonDeletar);
 
             imageButtonEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
