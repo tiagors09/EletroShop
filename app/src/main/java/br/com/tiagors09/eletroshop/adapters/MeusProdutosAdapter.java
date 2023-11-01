@@ -41,7 +41,7 @@ public class MeusProdutosAdapter extends RecyclerView.Adapter<MeusProdutosAdapte
 
         holder.setUuid(produto.getUuid());
         holder.textViewTitulo.setText(produto.getTitulo());
-        holder.textViewPreco.setText("R$ " + String.valueOf(produto.getPreco()));
+        holder.textViewPreco.setText(String.format("R$ %.2f", produto.getPreco()));
         holder.imageViewFoto.setImageResource(produto.getFoto());
     }
 

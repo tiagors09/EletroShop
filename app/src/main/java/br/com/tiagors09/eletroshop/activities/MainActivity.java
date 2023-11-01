@@ -14,7 +14,7 @@ import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.fragments.CarrinhoFragment;
 import br.com.tiagors09.eletroshop.fragments.ExibicaoPerfilFragment;
 import br.com.tiagors09.eletroshop.fragments.ExibicaoProdutosFragment;
-import br.com.tiagors09.eletroshop.fragments.FavoritosFragment;
+import br.com.tiagors09.eletroshop.fragments.HistoricoFragment;
 import br.com.tiagors09.eletroshop.fragments.MeusProdutosFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         if (item.getItemId() == R.id.favoritos) {
-            loadFragment(new FavoritosFragment());
+            loadFragment(new HistoricoFragment());
         }
 
         if (item.getItemId() == R.id.perfil) {
