@@ -36,34 +36,33 @@
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="128dp"
-                    android:layout_height="128dp"
-                    tools:srcCompat="@drawable/cr7_perfil" />
+                    android:layout_height="128dp" />
+
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/buttonEditarImagem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/black"
+                android:text="@string/btn_editar_imagem"
+                app:cornerRadius="4dp"
+                app:icon="@drawable/btn_edit_foreground"
+                app:iconGravity="textStart"
+                app:iconSize="32dp" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="100dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/buttonEditarImagem"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="@color/black"
-                    android:text="@string/btn_editar_imagem"
-                    app:cornerRadius="4dp"
-                    app:icon="@drawable/btn_edit_foreground"
-                    app:iconGravity="textStart"
-                    app:iconSize="32dp" />
-            </LinearLayout>
+                    android:hint="@string/cpf_hint"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -72,9 +71,11 @@
                 app:boxStrokeWidth="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/placeholder_nome" />
+                    android:hint="@string/placeholder_nome"
+                    android:inputType="text|textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -83,10 +84,12 @@
                 android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dataNasc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:hint="@string/placeholder_data_nascimento" />
+                    android:hint="@string/placeholder_data_nascimento"
+                    android:inputType="datetime|date" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -95,9 +98,11 @@
                 android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/localizacao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/placeholder_localizacao" />
+                    android:hint="@string/placeholder_localizacao"
+                    android:inputType="text|textPostalAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -106,10 +111,12 @@
                 android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="email"
-                    android:hint="@string/placeholder_email" />
+                    android:hint="@string/placeholder_email"
+                    android:inputType="text|textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -118,9 +125,11 @@
                 android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/senha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/placeholder_senha" />
+                    android:hint="@string/placeholder_senha"
+                    android:inputType="text|textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -129,10 +138,12 @@
                 android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:hint="@string/placeholder_bio"
+                    android:inputType="text|textLongMessage|textMultiLine"
                     android:lines="5" />
             </com.google.android.material.textfield.TextInputLayout>
 
