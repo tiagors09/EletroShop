@@ -11,10 +11,9 @@ public class Usuario {
     private Localizacao local;
     private String bio;
     private String email;
-    private String password;
     private int fotoPerfil;
 
-    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password) {
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email) {
         this.CPF = CPF;
         this.nome = nome;
 
@@ -24,10 +23,9 @@ public class Usuario {
         this.local = local;
         this.bio = bio;
         this.email = email;
-        this.password = password;
     }
 
-    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String password, int fotoPerfil) {
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, int fotoPerfil) {
         this.CPF = CPF;
         this.nome = nome;
 
@@ -37,7 +35,6 @@ public class Usuario {
         this.local = local;
         this.bio = bio;
         this.email = email;
-        this.password = password;
         this.fotoPerfil = fotoPerfil;
     }
 
@@ -87,19 +84,6 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public boolean setPassword(String password) {
-        if(!this.password.equals(password) && password.length() >= 8) {
-            this.password = password;
-            return true;
-        }
-
-        return false;
-    }
-
     public void setFotoPerfil(int fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
@@ -117,7 +101,6 @@ public class Usuario {
                 ", local=" + local +
                 ", bio='" + bio + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", fotoPerfil=" + fotoPerfil +
                 '}';
     }
