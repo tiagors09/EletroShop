@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 validarCampos();
 
-                if (Arrays.stream(campos).allMatch(campo -> TextUtils.isEmpty(campo.getText()))) {
+                if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
                     firebaseAuth
                             .signInWithEmailAndPassword(
                                     email.getText().toString(),
@@ -65,7 +65,10 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onSuccess(AuthResult authResult) {
                                     startActivity(
                                             new Intent(getApplicationContext(), MainActivity.class)
-                                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                                    .addFlags(
+                                                            Intent.FLAG_ACTIVITY_NEW_TASK |
+                                                                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                    )
                                     );
                                 }
                             })
