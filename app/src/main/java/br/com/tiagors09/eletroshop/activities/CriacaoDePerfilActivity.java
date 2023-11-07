@@ -27,7 +27,7 @@ import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class CriacaoDePerfilActivity extends AppCompatActivity {
     private Button btnCancelar, btnSalvar;
-    private TextInputEditText cpf, nome, dataNasc, localizacao, email, senha, bio;
+    private TextInputEditText email, senha;
     private TextInputEditText[] campos;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -37,13 +37,8 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criacao_de_perfil);
 
-        cpf = findViewById(R.id.cpf);
-        nome = findViewById(R.id.nome);
-        dataNasc = findViewById(R.id.dataNasc);
-        localizacao = findViewById(R.id.localizacao);
         email = findViewById(R.id.email);
         senha = findViewById(R.id.senha);
-        bio = findViewById(R.id.bio);
 
         campos = new TextInputEditText[]{email, senha};
 
