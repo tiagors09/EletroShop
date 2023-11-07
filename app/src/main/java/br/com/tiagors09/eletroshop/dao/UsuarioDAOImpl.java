@@ -21,7 +21,6 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                 new Localizacao(3.1000, 4.000),
                 "Vendedor de produtos usados de Quixadá",
                 "tiagorodriguessousa9@gmail.com",
-                "SenhaTeste123",
                 R.drawable.pic
         ));
     }
