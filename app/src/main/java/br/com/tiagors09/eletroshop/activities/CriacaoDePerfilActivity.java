@@ -1,19 +1,25 @@
 package br.com.tiagors09.eletroshop.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Arrays;
 
 import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.modelos.Localizacao;
@@ -22,6 +28,7 @@ import br.com.tiagors09.eletroshop.modelos.Usuario;
 public class CriacaoDePerfilActivity extends AppCompatActivity {
     private Button btnCancelar, btnSalvar;
     private TextInputEditText cpf, nome, dataNasc, localizacao, email, senha, bio;
+    private TextInputEditText[] campos;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -38,40 +45,46 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
         senha = findViewById(R.id.senha);
         bio = findViewById(R.id.bio);
 
+        campos = new TextInputEditText[]{email, senha};
+
         btnSalvar = findViewById(R.id.buttonSalvar);
         btnCancelar = findViewById(R.id.buttonCancelar);
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth
-                        .createUserWithEmailAndPassword(
-                                email.getText().toString(),
-                                senha.getText().toString()
-                        )
-                        .addOnSuccessListener(CriacaoDePerfilActivity.this, new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                databaseReference.child("usuarios").push().setValue(
-                                        new Usuario(
-                                                cpf.getText().toString(),
-                                                nome.getText().toString(),
-                                                dataNasc.getText().toString(),
-                                                new Localizacao(2, 3),
-                                                bio.getText().toString(),
-                                                email.getText().toString()
-                                        )
-                                )
-                                        .addOnSuccessListener(CriacaoDePerfilActivity.this, new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                Toast
-                                                        .makeText(CriacaoDePerfilActivity.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
-                                                        .show();
-                                            }
-                                        });
-                            }
-                        });
+                validarCampos();
+
+                if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
+                    firebaseAuth
+                            .createUserWithEmailAndPassword(
+                                    email.getText().toString(),
+                                    senha.getText().toString()
+                            )
+                            .addOnSuccessListener(
+                                    CriacaoDePerfilActivity.this,
+                                    new OnSuccessListener<AuthResult>() {
+                                        @Override
+                                        public void onSuccess(AuthResult authResult) {
+                                           finish();
+                                        }
+                                    }
+                            )
+                            .addOnFailureListener(
+                                    CriacaoDePerfilActivity.this,
+                                    new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast
+                                                    .makeText(
+                                                            CriacaoDePerfilActivity.this,
+                                                            e.getMessage(),
+                                                            Toast.LENGTH_SHORT)
+                                                    .show();
+                                        }
+                                    }
+                            );
+                }
             }
         });
 
@@ -81,5 +94,12 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void validarCampos() {
+        for (TextInputEditText campo : campos) {
+            if (TextUtils.isEmpty(campo.getText()))
+                campo.setError("O campo está vazio");
+        }
     }
 }
