@@ -94,14 +94,12 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "CPF='" + CPF + '\'' +
-                ", nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", local=" + local +
-                ", bio='" + bio + '\'' +
-                ", email='" + email + '\'' +
-                ", fotoPerfil=" + fotoPerfil +
-                '}';
+        return String.format("" +
+                "{ cpf: %s," +
+                " nome: %s," +
+                " dataNascimento: %s," +
+                " local: %s,"  +
+                " bio: %s," +
+                " email: %s }", CPF, nome, dataNascimento.toString(), local.toString(), bio, email);
     }
 }
