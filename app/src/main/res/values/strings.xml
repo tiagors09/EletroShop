@@ -70,4 +70,5 @@
     <string name="label_transacao_valor">Valor</string>
     <string name="label_transacao_placeholder">PLACEHOLDER</string>
     <string name="cpf_hint">digite seu cpf</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
