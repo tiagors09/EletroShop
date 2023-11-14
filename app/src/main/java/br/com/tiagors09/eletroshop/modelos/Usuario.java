@@ -1,17 +1,28 @@
 package br.com.tiagors09.eletroshop.modelos;
 
+import com.google.gson.annotations.Expose;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Usuario {
+    @Expose
     private String CPF;
+    @Expose
     private String nome;
+    @Expose
     private LocalDate dataNascimento;
+    @Expose
     private Localizacao local;
+    @Expose
     private String bio;
+    @Expose
     private String email;
+    private String senha;
     private int fotoPerfil;
+
+    public Usuario() {}
 
     public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email) {
         this.CPF = CPF;
@@ -24,6 +35,20 @@ public class Usuario {
         this.bio = bio;
         this.email = email;
     }
+
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String senha) {
+        this.CPF = CPF;
+        this.nome = nome;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNascimento = LocalDate.parse(dataNascimento,dateTimeFormatter);
+
+        this.local = local;
+        this.bio = bio;
+        this.email = email;
+        this.senha = senha;
+    }
+
 
     public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, int fotoPerfil) {
         this.CPF = CPF;
@@ -92,14 +117,25 @@ public class Usuario {
         return fotoPerfil;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     @Override
     public String toString() {
-        return String.format("" +
-                "{ cpf: %s," +
-                " nome: %s," +
-                " dataNascimento: %s," +
-                " local: %s,"  +
-                " bio: %s," +
-                " email: %s }", CPF, nome, dataNascimento.toString(), local.toString(), bio, email);
+        return "Usuario{" +
+                "CPF='" + CPF + '\'' +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", local=" + local +
+                ", bio='" + bio + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", fotoPerfil=" + fotoPerfil +
+                '}';
     }
 }

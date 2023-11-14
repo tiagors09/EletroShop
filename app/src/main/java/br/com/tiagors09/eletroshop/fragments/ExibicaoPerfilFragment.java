@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.activities.EdicaoDePerfilActivity;
@@ -47,13 +51,37 @@ public class ExibicaoPerfilFragment extends Fragment {
         imageViewPerfil = view.findViewById(R.id.imageViewPerfil);
 
         usuarioDAO = UsuarioDAOImpl.getInstance();
-        usuario = usuarioDAO.ler("01234567891");
 
-        textViewNome.setText(usuario.getNome());
-        textViewLocalizacao.setText(usuario.getLocal().toString());
-        textViewDataNasc.setText(usuario.getDataNascimento().toString());
-        textViewBio.setText(usuario.getBio());
-        imageViewPerfil.setImageResource(usuario.getFotoPerfil());
+        usuarioDAO
+                .ler("01234567891")
+                        .addOnSuccessListener(
+                                new OnSuccessListener<Usuario>() {
+                                    @Override
+                                    public void onSuccess(Usuario usuario) {
+                                        textViewNome.setText(usuario.getNome());
+                                        textViewLocalizacao.setText(usuario.getLocal().toString());
+                                        textViewDataNasc.setText(usuario.getDataNascimento().toString());
+                                        textViewBio.setText(usuario.getBio());
+                                        imageViewPerfil.setImageResource(usuario.getFotoPerfil());
+                                    }
+                                }
+                        )
+                                .addOnFailureListener(
+                                        new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast
+                                                        .makeText(
+                                                                getContext(),
+                                                                e.getMessage(),
+                                                                Toast.LENGTH_SHORT
+                                                        )
+                                                        .show();
+                                            }
+                                        }
+                                );
+
+
 
         buttonEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Arrays;
 
 import br.com.tiagors09.eletroshop.R;
+import br.com.tiagors09.eletroshop.dao.UsuarioDAO;
+import br.com.tiagors09.eletroshop.dao.UsuarioDAOImpl;
 import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
@@ -29,8 +31,7 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
     private Button btnCancelar, btnSalvar;
     private TextInputEditText email, senha;
     private TextInputEditText[] campos;
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private UsuarioDAO usuarioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +46,43 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.buttonSalvar);
         btnCancelar = findViewById(R.id.buttonCancelar);
 
+        usuarioDAO = UsuarioDAOImpl.getInstance();
+
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validarCampos();
 
                 if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
-                    firebaseAuth
-                            .createUserWithEmailAndPassword(
-                                    email.getText().toString(),
-                                    senha.getText().toString()
+                    usuarioDAO
+                            .salvar(
+                                    new Usuario(
+                                            "123.456.784.353.95",
+                                            "Tiago",
+                                            "28/01/2001",
+                                            new Localizacao(2, 3),
+                                            "teste",
+                                            email.getText().toString(),
+                                            senha.getText().toString()
+                                    )
                             )
                             .addOnSuccessListener(
-                                    CriacaoDePerfilActivity.this,
-                                    new OnSuccessListener<AuthResult>() {
+                                    new OnSuccessListener<Boolean>() {
                                         @Override
-                                        public void onSuccess(AuthResult authResult) {
-                                           finish();
+                                        public void onSuccess(Boolean aBoolean) {
+                                            if (aBoolean) {
+                                                Toast
+                                                        .makeText(
+                                                                CriacaoDePerfilActivity.this,
+                                                                "Deu bom!",
+                                                                Toast.LENGTH_SHORT
+                                                        )
+                                                        .show();
+                                            }
                                         }
                                     }
                             )
                             .addOnFailureListener(
-                                    CriacaoDePerfilActivity.this,
                                     new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
@@ -74,7 +90,8 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
                                                     .makeText(
                                                             CriacaoDePerfilActivity.this,
                                                             e.getMessage(),
-                                                            Toast.LENGTH_SHORT)
+                                                            Toast.LENGTH_SHORT
+                                                    )
                                                     .show();
                                         }
                                     }

@@ -1,5 +1,6 @@
 package br.com.tiagors09.eletroshop.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 
 import br.com.tiagors09.eletroshop.R;
@@ -48,15 +51,37 @@ public class EdicaoDePerfilActivity extends AppCompatActivity {
         String usuarioChave = extras.getString("USUARIO_CHAVE");
 
         usuarioDAO = UsuarioDAOImpl.getInstance();
-        usuario = usuarioDAO.ler(usuarioChave);
+        usuarioDAO
+                .ler(usuarioChave)
+                        .addOnSuccessListener(
+                                new OnSuccessListener<Usuario>() {
+                                    @Override
+                                    public void onSuccess(Usuario usuario) {
+                                        textInputEditTextNome.setText(usuario.getNome());
+                                        textInputEditTextNomeDataNasc.setText(usuario.getDataNascimento().toString());
+                                        textInputEditTextLocal.setText(usuario.getLocal().toString());
+                                        textInputEditTextEmail.setText(usuario.getEmail());
+                                        //        textInputEditTextSenha.setText(usuario.get);
+                                        textInputEditTextNomeBio.setText(usuario.getBio());
+                                        imgPerfil.setImageResource(usuario.getFotoPerfil());
+                                    }
+                                }
+                        )
+                                .addOnFailureListener(
+                                        new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast
+                                                        .makeText(
+                                                                EdicaoDePerfilActivity.this,
+                                                                e.getMessage(),
+                                                                Toast.LENGTH_SHORT)
+                                                        .show();
+                                            }
+                                        }
+                                );
 
-        textInputEditTextNome.setText(usuario.getNome());
-        textInputEditTextNomeDataNasc.setText(usuario.getDataNascimento().toString());
-        textInputEditTextLocal.setText(usuario.getLocal().toString());
-        textInputEditTextEmail.setText(usuario.getEmail());
-//        textInputEditTextSenha.setText(usuario.get);
-        textInputEditTextNomeBio.setText(usuario.getBio());
-        imgPerfil.setImageResource(usuario.getFotoPerfil());
+
 
         buttonEditarImagem.setOnClickListener(new View.OnClickListener() {
             @Override
