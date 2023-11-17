@@ -1,6 +1,5 @@
 package br.com.tiagors09.eletroshop.activities;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +8,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 
 import br.com.tiagors09.eletroshop.R;
@@ -38,81 +34,57 @@ public class EdicaoDePerfilActivity extends AppCompatActivity {
 
         buttonEditarImagem = findViewById(R.id.buttonEditarImagem);
         textInputEditTextNome = findViewById(R.id.textInputEditTextNome);
-        textInputEditTextNomeDataNasc = findViewById(R.id.textInputEditTextNomeDataNasc);
+        textInputEditTextNomeDataNasc = findViewById(R.id.textInputEditTextDataNasc);
         textInputEditTextLocal = findViewById(R.id.textInputEditTextLocal);
         textInputEditTextEmail = findViewById(R.id.textInputEditTextEmail);
         textInputEditTextSenha = findViewById(R.id.textInputEditTextSenha);
-        textInputEditTextNomeBio = findViewById(R.id.textInputEditTextNomeBio);
+        textInputEditTextNomeBio = findViewById(R.id.textInputEditTextBio);
         imgPerfil = findViewById(R.id.imgPerfil);
         buttonSalvar = findViewById(R.id.buttonSalvar);
         buttonCancelar = findViewById(R.id.buttonCancelar);
-
-        Bundle extras = getIntent().getExtras();
-        String usuarioChave = extras.getString("USUARIO_CHAVE");
 
         usuarioDAO = UsuarioDAOImpl.getInstance();
         usuarioDAO
                 .ler()
                         .addOnSuccessListener(
-                                new OnSuccessListener<Usuario>() {
-                                    @Override
-                                    public void onSuccess(Usuario usuario) {
-                                        textInputEditTextNome.setText(usuario.getNome());
-                                        textInputEditTextNomeDataNasc.setText(usuario.getDataNascimento().toString());
-                                        textInputEditTextLocal.setText(usuario.getLocal().toString());
-                                        textInputEditTextEmail.setText(usuario.getEmail());
-                                        //        textInputEditTextSenha.setText(usuario.get);
-                                        textInputEditTextNomeBio.setText(usuario.getBio());
-                                        imgPerfil.setImageResource(usuario.getFotoPerfil());
-                                    }
+                                usuario -> {
+                                    textInputEditTextNome.setText(usuario.getNome());
+                                    textInputEditTextNomeDataNasc.setText(usuario.getDataNascimento().toString());
+                                    textInputEditTextLocal.setText(usuario.getLocal().toString());
+                                    textInputEditTextEmail.setText(usuario.getEmail());
+                                    //        textInputEditTextSenha.setText(usuario.get);
+                                    textInputEditTextNomeBio.setText(usuario.getBio());
+                                    imgPerfil.setImageResource(usuario.getFotoPerfil());
                                 }
                         )
                                 .addOnFailureListener(
-                                        new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast
-                                                        .makeText(
-                                                                EdicaoDePerfilActivity.this,
-                                                                e.getMessage(),
-                                                                Toast.LENGTH_SHORT)
-                                                        .show();
-                                            }
-                                        }
+                                        e -> Toast
+                                                .makeText(
+                                                        EdicaoDePerfilActivity.this,
+                                                        e.getMessage(),
+                                                        Toast.LENGTH_SHORT)
+                                                .show()
                                 );
 
 
 
-        buttonEditarImagem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                try {
-                    startActivity(takePictureIntent);
-                } catch (ActivityNotFoundException e) {
-                    Toast
-                            .makeText(
-                                    getApplicationContext(),
-                                    e.getMessage(),
-                                    Toast.LENGTH_SHORT)
-                            .show();
-                }
+        buttonEditarImagem.setOnClickListener(view -> {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            try {
+                startActivity(takePictureIntent);
+            } catch (ActivityNotFoundException e) {
+                Toast
+                        .makeText(
+                                getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_SHORT)
+                        .show();
             }
         });
 
-        buttonSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        buttonSalvar.setOnClickListener(v -> finish());
 
-        buttonCancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        buttonCancelar.setOnClickListener(v -> finish());
     }
 
     @Override

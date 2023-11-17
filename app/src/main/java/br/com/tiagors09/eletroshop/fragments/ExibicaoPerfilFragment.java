@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.time.format.DateTimeFormatter;
+
 import br.com.tiagors09.eletroshop.R;
 import br.com.tiagors09.eletroshop.activities.EdicaoDePerfilActivity;
 import br.com.tiagors09.eletroshop.activities.LoginActivity;
@@ -55,50 +57,34 @@ public class ExibicaoPerfilFragment extends Fragment {
         usuarioDAO
                 .ler()
                         .addOnSuccessListener(
-                                new OnSuccessListener<Usuario>() {
-                                    @Override
-                                    public void onSuccess(Usuario usuario) {
-                                        textViewNome.setText(usuario.getNome());
-                                        textViewLocalizacao.setText(usuario.getLocal().toString());
-                                        textViewDataNasc.setText(usuario.getDataNascimento().toString());
-                                        textViewBio.setText(usuario.getBio());
-                                        imageViewPerfil.setImageResource(usuario.getFotoPerfil());
-                                    }
+                                usuario -> {
+                                    textViewNome.setText(usuario.getNome());
+                                    textViewDataNasc.setText(usuario.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM/YYYY")));
+                                    textViewBio.setText(usuario.getBio());
+                                    imageViewPerfil.setImageResource(usuario.getFotoPerfil());
                                 }
                         )
                                 .addOnFailureListener(
-                                        new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast
-                                                        .makeText(
-                                                                getContext(),
-                                                                e.getMessage(),
-                                                                Toast.LENGTH_SHORT
-                                                        )
-                                                        .show();
-                                            }
-                                        }
+                                        e -> Toast
+                                                .makeText(
+                                                        getContext(),
+                                                        e.getMessage(),
+                                                        Toast.LENGTH_SHORT
+                                                )
+                                                .show()
                                 );
 
 
 
-        buttonEditarPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EdicaoDePerfilActivity.class);
-                intent.putExtra("USUARIO_CHAVE", "01234567891");
-                startActivity(intent);
-            }
+        buttonEditarPerfil.setOnClickListener(view1 -> {
+            Intent intent = new Intent(view1.getContext(), EdicaoDePerfilActivity.class);
+            startActivity(intent);
         });
 
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
+        buttonLogout.setOnClickListener(view12 -> {
+            Intent intent = new Intent(view12.getContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
 
         return view;
