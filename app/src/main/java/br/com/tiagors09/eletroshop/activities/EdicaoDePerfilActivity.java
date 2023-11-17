@@ -39,7 +39,7 @@ public class EdicaoDePerfilActivity extends AppCompatActivity {
         buttonEditarImagem = findViewById(R.id.buttonEditarImagem);
         textInputEditTextNome = findViewById(R.id.textInputEditTextNome);
         textInputEditTextNomeDataNasc = findViewById(R.id.textInputEditTextNomeDataNasc);
-        textInputEditTextLocal = findViewById(R.id.textInputEditTextLocal);
+        textInputEditTextLocal = findViewById(R.id.localizacao);
         textInputEditTextEmail = findViewById(R.id.textInputEditTextEmail);
         textInputEditTextSenha = findViewById(R.id.textInputEditTextSenha);
         textInputEditTextNomeBio = findViewById(R.id.textInputEditTextNomeBio);

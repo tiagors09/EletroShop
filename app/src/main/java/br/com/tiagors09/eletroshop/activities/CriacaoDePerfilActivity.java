@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,6 +29,8 @@ import br.com.tiagors09.eletroshop.modelos.Usuario;
 public class CriacaoDePerfilActivity extends AppCompatActivity {
     private Button btnCancelar, btnSalvar;
     private TextInputEditText email, senha;
+
+    private Button localizacao;
     private TextInputEditText[] campos;
     private UsuarioDAO usuarioDAO;
 
@@ -40,6 +43,8 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
         senha = findViewById(R.id.senha);
 
         campos = new TextInputEditText[]{email, senha};
+
+        localizacao = findViewById(R.id.localizacao);
 
         btnSalvar = findViewById(R.id.buttonSalvar);
         btnCancelar = findViewById(R.id.buttonCancelar);
@@ -93,6 +98,13 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        localizacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startMap();
+            }
+        });
     }
 
     private void validarCampos() {
@@ -100,5 +112,11 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(campo.getText()))
                 campo.setError("O campo está vazio");
         }
+    }
+
+    private void startMap() {
+        startActivity(
+                new Intent(getApplicationContext(), MapsActivity.class)
+        );
     }
 }
