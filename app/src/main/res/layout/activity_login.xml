@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email"
+            android:id="@+id/textInputEditTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/placeholder_email" />
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/senha"
+            android:id="@+id/textInputEditTextSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/placeholder_senha"
