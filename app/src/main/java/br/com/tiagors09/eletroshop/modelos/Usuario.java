@@ -1,7 +1,6 @@
 package br.com.tiagors09.eletroshop.modelos;
 
 import com.google.firebase.database.Exclude;
-import com.google.gson.annotations.Expose;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,6 +20,18 @@ public class Usuario {
     private int fotoPerfil;
 
     public Usuario() {}
+
+    public Usuario(String nome, String dataNascimento, Localizacao local, String bio, String email, String senha) {
+        this.nome = nome;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNascimento = LocalDate.parse(dataNascimento,dateTimeFormatter);
+
+        this.local = local;
+        this.bio = bio;
+        this.email = email;
+        this.senha = senha;
+    }
 
     public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email) {
         this.CPF = CPF;
