@@ -21,6 +21,22 @@ public class Usuario {
 
     public Usuario() {}
 
+    public Usuario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario(String nome, String dataNascimento, String bio, String email, String senha) {
+        this.nome = nome;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNascimento = LocalDate.parse(dataNascimento,dateTimeFormatter);
+
+        this.bio = bio;
+        this.email = email;
+        this.senha = senha;
+    }
+
     public Usuario(String nome, String dataNascimento, Localizacao local, String bio, String email, String senha) {
         this.nome = nome;
 
@@ -139,7 +155,7 @@ public class Usuario {
             put("CPF", CPF);
             put("nome", nome);
             put("dataNacimento", dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/YYYY")));
-            put("local", local.toString());
+            put("local", local);
             put("bio", bio);
             put("email", email);
         }};
