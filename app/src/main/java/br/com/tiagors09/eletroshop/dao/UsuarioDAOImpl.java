@@ -1,28 +1,34 @@
 package br.com.tiagors09.eletroshop.dao;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+
 import java.util.List;
 
-import br.com.tiagors09.eletroshop.R;
-import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
-    private List<Usuario> usuarios;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
     private static UsuarioDAO instance;
+    private Gson gson;
 
     private UsuarioDAOImpl() {
-        this.usuarios = new ArrayList<Usuario>();
-
-        salvar(new Usuario(
-                "01234567891",
-                "Tiago Rodrigues Sousa",
-                "28/01/2001",
-                new Localizacao(3.1000, 4.000),
-                "Vendedor de produtos usados de Quixadá",
-                "tiagorodriguessousa9@gmail.com",
-                R.drawable.pic
-        ));
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("usuarios");
+        gson = new Gson();
     }
 
     public static UsuarioDAO getInstance() {
@@ -33,36 +39,113 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         return instance;
     }
 
-    @Override
-    public boolean salvar(Usuario u) {
-        return usuarios.add(u);
+    private Task<AuthResult> criarUsuario(Usuario u) {
+        return firebaseAuth
+                .createUserWithEmailAndPassword(u.getEmail(), u.getSenha());
     }
 
     @Override
-    public Usuario apagar(String CPF) {
-        Usuario u = this.usuarios
-                .stream()
-                .filter(usuario -> usuario
-                                .getCPF()
-                                .equals(CPF))
-                .findFirst()
-                .orElse(null);
+    public Task<Boolean> salvar(Usuario u) {
+        final TaskCompletionSource<Boolean> myTask = new TaskCompletionSource<>();
 
-        return this.usuarios
-                .remove(this.usuarios.indexOf(u));
+        criarUsuario(u)
+                .addOnSuccessListener(authResultCreate -> {
+                                 entrar(u)
+                                         .addOnSuccessListener(authResultSigIn -> {
+                                             databaseReference
+                                                     .child(authResultSigIn.getUser().getUid())
+                                                     .setValue(u.toMap());
+                                         })
+                                         .addOnFailureListener(entrarFalha -> {
+                                             myTask.setException(entrarFalha);
+                                         });
+                        })
+                .addOnFailureListener(criarUsuarioResultado -> {
+                    myTask.setException(criarUsuarioResultado);
+                });
+
+        return myTask.getTask();
     }
 
     @Override
-    public Usuario ler(String chave) {
-        return usuarios
-                .stream()
-                .filter(usuario -> usuario.getCPF().equals(chave) || usuario.getEmail().equals(chave))
-                .findFirst()
-                .orElse(null);
+    public Task<Boolean> apagar() {
+        final TaskCompletionSource<Boolean> task = new TaskCompletionSource<>();
+
+        databaseReference
+                .child(firebaseAuth.getUid())
+                .removeValue()
+                .addOnSuccessListener(
+                        unused -> task.setResult(true)
+                )
+                .addOnFailureListener(
+                        e -> task.setException(e)
+                );
+
+        return task.getTask();
     }
 
     @Override
-    public List<Usuario> lerTodosUsuarios() {
-        return this.usuarios;
+    public Task<Usuario> ler() {
+        final TaskCompletionSource<Usuario> task = new TaskCompletionSource<>();
+
+        databaseReference
+                .addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Usuario usuario = snapshot
+                                        .child(firebaseAuth.getUid())
+                                        .getValue(Usuario.class);
+                                task
+                                        .setResult(usuario);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                task
+                                        .setException(
+                                                error
+                                                        .toException()
+                                        );
+                            }
+                        }
+                );
+
+        return task.getTask();
+    }
+
+    @Override
+    public Task<List<Usuario>> lerTodosUsuarios() {
+        final TaskCompletionSource<List<Usuario>> task = new TaskCompletionSource<>();
+
+        databaseReference
+                .addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                List<Usuario> usuarios = snapshot.getValue(List.class);
+                                task.setResult(usuarios);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                task.setException(error.toException());
+                            }
+                        }
+                );
+
+        return task.getTask();
+    }
+
+    @Override
+    public Task<AuthResult> entrar(Usuario u) {
+        return firebaseAuth
+                .signInWithEmailAndPassword(u.getEmail(), u.getSenha());
+    }
+
+    @Override
+    public Task<Void> sair() {
+        firebaseAuth.signOut();
+        return null;
     }
 }

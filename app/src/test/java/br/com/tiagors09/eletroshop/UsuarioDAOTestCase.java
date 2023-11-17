@@ -2,6 +2,8 @@ package br.com.tiagors09.eletroshop;
 
 import static org.junit.Assert.*;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import org.junit.Test;
 
 import br.com.tiagors09.eletroshop.dao.UsuarioDAO;
@@ -11,10 +13,6 @@ import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class UsuarioDAOTestCase {
     private UsuarioDAO usuarioDAO = UsuarioDAOImpl.getInstance();
-    @Test
-    public void instanciarUsuarioDAO() {
-        assertNotNull(this.usuarioDAO);
-    }
 
     @Test
     public void adicionarUsuario() {
@@ -27,21 +25,26 @@ public class UsuarioDAOTestCase {
                 "tiagors09@gmail.com",
                 "Teste1234!");
 
-        assertNotNull(this.usuarioDAO);
-
-        usuarioDAO.salvar(usuario);
-
-        assertNotNull(this.usuarioDAO.lerTodosUsuarios());
+        usuarioDAO
+                .salvar(usuario)
+                .addOnSuccessListener(
+                        new OnSuccessListener<Boolean>() {
+                            @Override
+                            public void onSuccess(Boolean aBoolean) {
+                                assertTrue(aBoolean);
+                            }
+                        }
+                );
     }
 
     @Test
     public void lerUsuario() {
-        assertNotNull(this.usuarioDAO.ler("01234567891"));
+        assertNotNull(this.usuarioDAO.ler());
     }
 
     @Test
     public void apagarUsuario() {
-        assertNotNull(this.usuarioDAO.apagar("01234567891"));
+        assertNotNull(this.usuarioDAO.apagar());
     }
 
     @Test

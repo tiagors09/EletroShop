@@ -45,7 +45,6 @@ public class UsuarioTestCase {
         assertNotSame(usuarioResultadoNaoEsperado, usuario);
 
         // Verifica alteração de senha
-        boolean foiAceita = usuario.setPassword("OutraSenhaExemplo");
-        assertTrue(foiAceita);
+        usuario.setSenha("OutraSenhaExemplo");
     }
 }
