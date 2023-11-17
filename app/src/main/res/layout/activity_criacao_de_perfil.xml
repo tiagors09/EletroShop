@@ -67,7 +67,8 @@
                 android:id="@+id/textInputEditTextNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/placeholder_nome" />
+                android:hint="@string/placeholder_nome"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,11 +79,12 @@
             app:boxStrokeColor="@color/emerald_border">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextNomeDataNasc"
+                android:id="@+id/textInputEditTextDataNasc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="@string/placeholder_data_nascimento" />
+                android:hint="@string/placeholder_data_nascimento"
+                android:inputType="datetime|date" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +109,7 @@
             android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email"
+                android:id="@+id/textInputEditTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="email"
@@ -121,7 +123,7 @@
             android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/senha"
+                android:id="@+id/textInputEditTextSenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/placeholder_senha"
@@ -135,11 +137,12 @@
             app:boxStrokeColor="@color/emerald_border">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextNomeBio"
+                android:id="@+id/textInputEditTextBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start|top|left"
                 android:hint="@string/placeholder_bio"
+                android:inputType="text|textMultiLine"
                 android:minLines="5" />
         </com.google.android.material.textfield.TextInputLayout>
 
