@@ -1,8 +1,12 @@
 package br.com.tiagors09.eletroshop.modelos;
 
+import com.google.firebase.database.Exclude;
+import com.google.gson.annotations.Expose;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Usuario {
     private String CPF;
@@ -11,7 +15,12 @@ public class Usuario {
     private Localizacao local;
     private String bio;
     private String email;
+    @Exclude
+    private String senha;
+    @Exclude
     private int fotoPerfil;
+
+    public Usuario() {}
 
     public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email) {
         this.CPF = CPF;
@@ -24,6 +33,20 @@ public class Usuario {
         this.bio = bio;
         this.email = email;
     }
+
+    public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, String senha) {
+        this.CPF = CPF;
+        this.nome = nome;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dataNascimento = LocalDate.parse(dataNascimento,dateTimeFormatter);
+
+        this.local = local;
+        this.bio = bio;
+        this.email = email;
+        this.senha = senha;
+    }
+
 
     public Usuario(String CPF, String nome, String dataNascimento, Localizacao local, String bio, String email, int fotoPerfil) {
         this.CPF = CPF;
@@ -92,14 +115,24 @@ public class Usuario {
         return fotoPerfil;
     }
 
-    @Override
-    public String toString() {
-        return String.format("" +
-                "{ cpf: %s," +
-                " nome: %s," +
-                " dataNascimento: %s," +
-                " local: %s,"  +
-                " bio: %s," +
-                " email: %s }", CPF, nome, dataNascimento.toString(), local.toString(), bio, email);
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<String, Object>() {{
+            put("CPF", CPF);
+            put("nome", nome);
+            put("dataNacimento", dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/YYYY")));
+            put("local", local.toString());
+            put("bio", bio);
+            put("email", email);
+        }};
+
+        return map;
     }
 }

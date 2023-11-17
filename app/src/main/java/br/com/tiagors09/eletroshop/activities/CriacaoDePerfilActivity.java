@@ -17,12 +17,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
 import br.com.tiagors09.eletroshop.R;
+import br.com.tiagors09.eletroshop.dao.UsuarioDAO;
+import br.com.tiagors09.eletroshop.dao.UsuarioDAOImpl;
 import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
@@ -32,8 +32,7 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
 
     private Button localizacao;
     private TextInputEditText[] campos;
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private UsuarioDAO usuarioDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,41 +49,46 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.buttonSalvar);
         btnCancelar = findViewById(R.id.buttonCancelar);
 
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validarCampos();
+        usuarioDAO = UsuarioDAOImpl.getInstance();
 
-                if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
-                    firebaseAuth
-                            .createUserWithEmailAndPassword(
-                                    email.getText().toString(),
-                                    senha.getText().toString()
-                            )
-                            .addOnSuccessListener(
-                                    CriacaoDePerfilActivity.this,
-                                    new OnSuccessListener<AuthResult>() {
-                                        @Override
-                                        public void onSuccess(AuthResult authResult) {
-                                           finish();
-                                        }
+        btnSalvar.setOnClickListener(v -> {
+            validarCampos();
+
+            if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
+                usuarioDAO
+                        .salvar(
+                                new Usuario(
+                                        "123.456.784.353.95",
+                                        "Tiago",
+                                        "28/01/2001",
+                                        new Localizacao(2, 3),
+                                        "teste",
+                                        email.getText().toString(),
+                                        senha.getText().toString()
+                                )
+                        )
+                        .addOnSuccessListener(
+                                aBoolean -> {
+                                    if (aBoolean) {
+                                        Toast
+                                                .makeText(
+                                                        CriacaoDePerfilActivity.this,
+                                                        "Deu bom!",
+                                                        Toast.LENGTH_SHORT
+                                                )
+                                                .show();
                                     }
-                            )
-                            .addOnFailureListener(
-                                    CriacaoDePerfilActivity.this,
-                                    new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast
-                                                    .makeText(
-                                                            CriacaoDePerfilActivity.this,
-                                                            e.getMessage(),
-                                                            Toast.LENGTH_SHORT)
-                                                    .show();
-                                        }
-                                    }
-                            );
-                }
+                                }
+                        )
+                        .addOnFailureListener(
+                                e -> Toast
+                                        .makeText(
+                                                CriacaoDePerfilActivity.this,
+                                                e.getMessage(),
+                                                Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                        );
             }
         });
 
