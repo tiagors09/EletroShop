@@ -15,21 +15,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import br.com.tiagors09.eletroshop.R;
-import br.com.tiagors09.eletroshop.modelos.Localizacao;
 import br.com.tiagors09.eletroshop.modelos.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private Gson gson;
     private static UsuarioDAO instance;
+    private Gson gson;
 
     private UsuarioDAOImpl() {
         firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("usuarios");
         gson = new Gson();
     }
 
@@ -41,76 +39,53 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         return instance;
     }
 
-    @Override
-    public Task<Boolean> salvar(Usuario u) {
-        final TaskCompletionSource<Boolean> task = new TaskCompletionSource<>();
-
-        firebaseAuth
-                .createUserWithEmailAndPassword(
-                        u.getEmail(),
-                        u.getSenha()
-                )
-                .addOnSuccessListener(
-                        authResult -> {
-                            if (authResult.getUser() != null) {
-                                firebaseAuth
-                                        .signInWithEmailAndPassword(
-                                                u.getEmail(),
-                                                u.getSenha()
-                                        )
-                                                .addOnSuccessListener(
-                                                        new OnSuccessListener<AuthResult>() {
-                                                            @Override
-                                                            public void onSuccess(AuthResult authResult) {
-                                                                
-                                                            }
-                                                        }
-                                                );
-                            }
-                        }
-                )
-                .addOnFailureListener(
-                        new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                task.setException(e);
-                            }
-                        }
-                );
-
-
-        return task.getTask();
+    private Task<AuthResult> criarUsuario(Usuario u) {
+        return firebaseAuth
+                .createUserWithEmailAndPassword(u.getEmail(), u.getSenha());
     }
 
     @Override
-    public Task<Boolean> apagar(String CPF) {
+    public Task<Boolean> salvar(Usuario u) {
+        final TaskCompletionSource<Boolean> myTask = new TaskCompletionSource<>();
+
+        criarUsuario(u)
+                .addOnSuccessListener(authResultCreate -> {
+                                 entrar(u)
+                                         .addOnSuccessListener(authResultSigIn -> {
+                                             databaseReference
+                                                     .child(authResultSigIn.getUser().getUid())
+                                                     .setValue(u.toMap());
+                                         })
+                                         .addOnFailureListener(entrarFalha -> {
+                                             myTask.setException(entrarFalha);
+                                         });
+                        })
+                .addOnFailureListener(criarUsuarioResultado -> {
+                    myTask.setException(criarUsuarioResultado);
+                });
+
+        return myTask.getTask();
+    }
+
+    @Override
+    public Task<Boolean> apagar() {
         final TaskCompletionSource<Boolean> task = new TaskCompletionSource<>();
 
         databaseReference
-                .child(CPF)
+                .child(firebaseAuth.getUid())
                 .removeValue()
                 .addOnSuccessListener(
-                        new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                task.setResult(true);
-                            }
-                        }
+                        unused -> task.setResult(true)
                 )
                 .addOnFailureListener(
-                        new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                task.setException(e);
-                            }
-                        }
+                        e -> task.setException(e)
                 );
 
         return task.getTask();
     }
 
     @Override
-    public Task<Usuario> ler(String CPF) {
+    public Task<Usuario> ler() {
         final TaskCompletionSource<Usuario> task = new TaskCompletionSource<>();
 
         databaseReference
@@ -119,7 +94,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 Usuario usuario = snapshot
-                                        .child(CPF)
+                                        .child(firebaseAuth.getUid())
                                         .getValue(Usuario.class);
                                 task
                                         .setResult(usuario);
@@ -160,5 +135,17 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                 );
 
         return task.getTask();
+    }
+
+    @Override
+    public Task<AuthResult> entrar(Usuario u) {
+        return firebaseAuth
+                .signInWithEmailAndPassword(u.getEmail(), u.getSenha());
+    }
+
+    @Override
+    public Task<Void> sair() {
+        firebaseAuth.signOut();
+        return null;
     }
 }

@@ -52,7 +52,7 @@ public class EdicaoDePerfilActivity extends AppCompatActivity {
 
         usuarioDAO = UsuarioDAOImpl.getInstance();
         usuarioDAO
-                .ler(usuarioChave)
+                .ler()
                         .addOnSuccessListener(
                                 new OnSuccessListener<Usuario>() {
                                     @Override

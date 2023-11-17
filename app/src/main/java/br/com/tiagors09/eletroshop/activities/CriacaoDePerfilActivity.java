@@ -16,8 +16,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
@@ -48,55 +46,44 @@ public class CriacaoDePerfilActivity extends AppCompatActivity {
 
         usuarioDAO = UsuarioDAOImpl.getInstance();
 
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validarCampos();
+        btnSalvar.setOnClickListener(v -> {
+            validarCampos();
 
-                if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
-                    usuarioDAO
-                            .salvar(
-                                    new Usuario(
-                                            "123.456.784.353.95",
-                                            "Tiago",
-                                            "28/01/2001",
-                                            new Localizacao(2, 3),
-                                            "teste",
-                                            email.getText().toString(),
-                                            senha.getText().toString()
-                                    )
-                            )
-                            .addOnSuccessListener(
-                                    new OnSuccessListener<Boolean>() {
-                                        @Override
-                                        public void onSuccess(Boolean aBoolean) {
-                                            if (aBoolean) {
-                                                Toast
-                                                        .makeText(
-                                                                CriacaoDePerfilActivity.this,
-                                                                "Deu bom!",
-                                                                Toast.LENGTH_SHORT
-                                                        )
-                                                        .show();
-                                            }
-                                        }
+            if (Arrays.stream(campos).allMatch(campo -> !TextUtils.isEmpty(campo.getText()))) {
+                usuarioDAO
+                        .salvar(
+                                new Usuario(
+                                        "123.456.784.353.95",
+                                        "Tiago",
+                                        "28/01/2001",
+                                        new Localizacao(2, 3),
+                                        "teste",
+                                        email.getText().toString(),
+                                        senha.getText().toString()
+                                )
+                        )
+                        .addOnSuccessListener(
+                                aBoolean -> {
+                                    if (aBoolean) {
+                                        Toast
+                                                .makeText(
+                                                        CriacaoDePerfilActivity.this,
+                                                        "Deu bom!",
+                                                        Toast.LENGTH_SHORT
+                                                )
+                                                .show();
                                     }
-                            )
-                            .addOnFailureListener(
-                                    new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast
-                                                    .makeText(
-                                                            CriacaoDePerfilActivity.this,
-                                                            e.getMessage(),
-                                                            Toast.LENGTH_SHORT
-                                                    )
-                                                    .show();
-                                        }
-                                    }
-                            );
-                }
+                                }
+                        )
+                        .addOnFailureListener(
+                                e -> Toast
+                                        .makeText(
+                                                CriacaoDePerfilActivity.this,
+                                                e.getMessage(),
+                                                Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                        );
             }
         });
 

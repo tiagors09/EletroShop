@@ -53,7 +53,7 @@ public class ExibicaoPerfilFragment extends Fragment {
         usuarioDAO = UsuarioDAOImpl.getInstance();
 
         usuarioDAO
-                .ler("01234567891")
+                .ler()
                         .addOnSuccessListener(
                                 new OnSuccessListener<Usuario>() {
                                     @Override

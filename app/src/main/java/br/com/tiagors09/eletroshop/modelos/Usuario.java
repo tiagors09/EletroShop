@@ -1,25 +1,23 @@
 package br.com.tiagors09.eletroshop.modelos;
 
+import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.Expose;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Usuario {
-    @Expose
     private String CPF;
-    @Expose
     private String nome;
-    @Expose
     private LocalDate dataNascimento;
-    @Expose
     private Localizacao local;
-    @Expose
     private String bio;
-    @Expose
     private String email;
+    @Exclude
     private String senha;
+    @Exclude
     private int fotoPerfil;
 
     public Usuario() {}
@@ -125,17 +123,16 @@ public class Usuario {
         this.senha = senha;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "CPF='" + CPF + '\'' +
-                ", nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", local=" + local +
-                ", bio='" + bio + '\'' +
-                ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                ", fotoPerfil=" + fotoPerfil +
-                '}';
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<String, Object>() {{
+            put("CPF", CPF);
+            put("nome", nome);
+            put("dataNacimento", dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/YYYY")));
+            put("local", local.toString());
+            put("bio", bio);
+            put("email", email);
+        }};
+
+        return map;
     }
 }
