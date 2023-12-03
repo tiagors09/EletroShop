@@ -1,7 +1,6 @@
 package br.com.tiagors09.eletroshop.modelos;
 
 import com.google.firebase.database.Exclude;
-import com.google.gson.annotations.Expose;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
