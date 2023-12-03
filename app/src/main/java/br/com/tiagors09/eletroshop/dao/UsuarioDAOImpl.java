@@ -13,7 +13,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -23,12 +22,10 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private static UsuarioDAO instance;
-    private Gson gson;
 
     private UsuarioDAOImpl() {
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("usuarios");
-        gson = new Gson();
     }
 
     public static UsuarioDAO getInstance() {
